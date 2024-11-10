@@ -15,7 +15,7 @@ const Navigation = () => {
   return (
     <header className="header">
       <div className="header__left">
-        <img src={eagleLogo} alt="Logo" className="header__logo" />
+        <img src={eagleLogo} alt="Logo" className="header_logo" />
         <img src={barclaysLogo} alt="Logo" className="header__logo" />
       </div>
       <div className="header__right">
