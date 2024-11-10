@@ -7,16 +7,19 @@ import OfferingsTabs from '../components/OfferingsTabs';
 import ExpenseCalc from '../components/ExpenseCalc';
 import CurrentAccount from '../components/CurrentAccount';
 import browsingHistory from '../data/browsingHistory.json';
+import ExpenseAnalysis from '../components/ExpenseAnalysis';
 
 const Travel = () => {
     const [selectedCountry, setSelectedCountry] = useState<string|null>(null);
     const [open, setOpen] = useState(selectedCountry === null);
     const [totalBudget, setTotalBudget] = useState<number>(0);
+    const [analysisOpen, setAnalysisOpen] = useState(false);
 
-    // Calculate initial total from browsing history
+    const mostVisitedLocations = browsingHistory.customer_financial_plan.browsing_history.browsing_summary.most_visited_locations;
+
     useEffect(() => {
-        const nextExpenses = browsingHistory.browsing_history.browsing_summary.next_expense;
-        const total = Object.values(nextExpenses).reduce((sum, value) => sum + value, 0);
+        const nextExpenses = browsingHistory.customer_financial_plan.browsing_history.browsing_summary.next_expense;
+        const total = Object.values(nextExpenses).reduce((sum, value) => sum + (value as number), 0);
         setTotalBudget(total);
     }, []);
 
@@ -58,7 +61,7 @@ const Travel = () => {
                                 gap={2}
                             >
                                 <Autocomplete
-                                    options={["USA", "Canada", "Mexico", "UK", "Australia", "India", "China", "Japan", "Brazil", "South Africa"]}
+                                    options={mostVisitedLocations}
                                     value={selectedCountry}
                                     onChange={(event, newValue) => setSelectedCountry(newValue)}
                                     renderInput={(params) => (
@@ -82,6 +85,7 @@ const Travel = () => {
                                     }}
                                 />
                                 <IconButton 
+                                    onClick={() => setAnalysisOpen(true)}
                                     sx={{ 
                                         transform: 'scale(1.2)',
                                         color: '#0B2F5E',
@@ -101,6 +105,12 @@ const Travel = () => {
                     </Grid>
                 </Grid>
             }
+
+            <ExpenseAnalysis 
+                open={analysisOpen}
+                onClose={() => setAnalysisOpen(false)}
+                currentExpense={totalBudget}
+            />
         </div>
     )
 }

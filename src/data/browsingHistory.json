@@ -1,86 +1,157 @@
 {
-  "browsing_history": {
-    "user_id": "BAR123456",
-    "timestamp": "2024-03-20T10:30:00Z",
-    "browsing_summary": {
-      "most_visited_locations": ["USA", "London", "Paris", "Dubai","India"],
-      "frequent_activity": "Searching for flights, travel insurance, forex cards, and travel tips",
-      "trip_types": [
-        "Family Vacation",
-        "Business",
-        "Solo Adventure"
-      ],
-      "next_expense": {
-        "Flight": 6000,
-        "Accommodation": 10000,
-        "Food": 5000,
-        "Transport": 8000,
-        "Entertainment": 13000
-      }
-    },
-    "detailed_history": {
-      "searches": [
-        {
-          "date": "2024-03-19",
-          "location": "USA",
-          "category": "Flights",
-          "frequency": 5
+    "customer_financial_plan": {
+      "customer_details": {
+        "accounts": [
+          {
+            "id": 1,
+            "accountType": "THE BARCLAYS BANK ACCOUNT",
+            "accountNumber": "**4789",
+            "availableBalance": 10000
+          },
+          {
+            "id": 2,
+            "accountType": "BARCLAYS BASIC CURRENT ACCOUNT",
+            "accountNumber": "**6234",
+            "availableBalance": 10000
+          },
+          {
+            "id": 3,
+            "accountType": "BARCLAYS BASIC SAVINGS ACCOUNT",
+            "accountNumber": "**9012",
+            "availableBalance": 22000
+          }
+        ],
+        "travel_investment": {
+          "investmentAmount": 5000.00,
+          "investmentType": "Travel Savings Plan",
+          "currentValue": 5200.00,
+          "investmentGrowth": "4% annual return"
         },
-        {
-          "date": "2024-03-18",
-          "location": "London",
-          "category": "Hotels",
-          "frequency": 3
-        },
-        {
-          "date": "2024-03-17",
-          "location": "Paris",
-          "category": "Travel Insurance",
-          "frequency": 2
+        "credit": {
+          "creditCardType": "Barclays Platinum",
+          "creditLimit": 10000.00,
+          "currentBalance": 2500.00,
+          "availableCredit": 7500.00,
+          "paymentDue": 1500.00,
+          "interestRate": "18% APR"
         }
-      ],
-      "clicked_products": [
-        {
-          "product": "Travel Insurance Premium",
-          "timestamp": "2024-03-19T15:45:00Z",
-          "interaction_time": "5m"
-        },
-        {
-          "product": "Forex Card",
-          "timestamp": "2024-03-18T11:20:00Z",
-          "interaction_time": "3m"
-        },
-        {
-          "product": "Flight Booking",
-          "timestamp": "2024-03-17T09:10:00Z",
-          "interaction_time": "8m"
-        }
-      ],
-      "saved_items": [
-        {
-          "type": "Flight",
-          "destination": "New York",
-          "saved_date": "2024-03-19",
-          "price": 785
-        },
-        {
-          "type": "Hotel",
-          "destination": "London",
-          "saved_date": "2024-03-18",
-          "price": 250
-        }
-      ]
-    },
-    "preferences": {
-      "preferred_airlines": ["British Airways", "American Airlines", "Emirates"],
-      "preferred_hotels": ["Hilton", "Marriott", "Hyatt"],
-      "budget_range": {
-        "min": 1000,
-        "max": 5000,
-        "currency": "GBP"
       },
-      "travel_class": "Business",
-      "accommodation_type": "4-5 Star Hotels"
+      "browsing_history": {
+        "user_id": "BAR123456",
+        "timestamp": "2024-03-20T10:30:00Z",
+        "browsing_summary": {
+          "most_visited_locations": ["USA", "London", "Paris", "Dubai", "India"],
+          "frequent_activity": "Searching for flights, travel insurance, forex cards, and travel tips",
+          "trip_types": [
+            "Family Vacation",
+            "Business",
+            "Solo Adventure"
+          ],
+          "next_expense": {
+            "Flight": 6000,
+            "Accommodation": 10000,
+            "Food": 5000,
+            "Transport": 8000,
+            "Entertainment": 13000
+          }
+        },
+        "detailed_history": {
+          "searches": [
+            {
+              "date": "2024-03-19",
+              "location": "USA",
+              "category": "Flights",
+              "frequency": 5
+            },
+            {
+              "date": "2024-03-18",
+              "location": "London",
+              "category": "Hotels",
+              "frequency": 3
+            },
+            {
+              "date": "2024-03-17",
+              "location": "Paris",
+              "category": "Travel Insurance",
+              "frequency": 2
+            }
+          ],
+          "clicked_products": [
+            {
+              "product": "Travel Insurance Premium",
+              "timestamp": "2024-03-19T15:45:00Z",
+              "interaction_time": "5m"
+            },
+            {
+              "product": "Forex Card",
+              "timestamp": "2024-03-18T11:20:00Z",
+              "interaction_time": "3m"
+            },
+            {
+              "product": "Flight Booking",
+              "timestamp": "2024-03-17T09:10:00Z",
+              "interaction_time": "8m"
+            }
+          ],
+          "saved_items": [
+            {
+              "type": "Flight",
+              "destination": "New York",
+              "saved_date": "2024-03-19",
+              "price": 785
+            },
+            {
+              "type": "Hotel",
+              "destination": "London",
+              "saved_date": "2024-03-18",
+              "price": 250
+            }
+          ]
+        },
+        "preferences": {
+          "preferred_airlines": ["British Airways", "American Airlines", "Emirates"],
+          "preferred_hotels": ["Hilton", "Marriott", "Hyatt"],
+          "budget_range": {
+            "min": 1000,
+            "max": 5000,
+            "currency": "GBP"
+          },
+          "travel_class": "Business",
+          "accommodation_type": "4-5 Star Hotels"
+        }
+      },
+      "recommended_financial_plan": {
+        "flight_expense": {
+          "amount": 6000,
+          "fund_source": "BARCLAYS BASIC CURRENT ACCOUNT"
+        },
+        "accommodation_expense": {
+          "amount": 10000,
+          "fund_source": "BARCLAYS BASIC CURRENT ACCOUNT"
+        },
+        "food_expense": {
+          "amount": 5000,
+          "fund_source": [
+            "THE BARCLAYS BANK ACCOUNT",
+            "BARCLAYS BASIC SAVINGS ACCOUNT"
+          ]
+        },
+        "transport_expense": {
+          "amount": 8000,
+          "fund_source": "BARCLAYS BASIC CURRENT ACCOUNT"
+        },
+        "entertainment_expense": {
+          "amount": 13000,
+          "fund_source": [
+            "Travel Investment",
+            "Barclays Platinum Credit Card"
+          ]
+        },
+        "total_funded": 42000,
+        "total_available": 42000,
+        "summary": {
+          "message": "This financial plan ensures you have the necessary funds for your upcoming USA trip, using a combination of your bank accounts, travel investment, and credit card for flexibility. All expenses are comfortably covered."
+        }
+      }
     }
   }
-} 

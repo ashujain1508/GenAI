@@ -1,0 +1,44 @@
+{
+  "financial_shortfall": {
+    "shortfall": 7906.29,
+    "suggested_solution": {
+      "step_1": {
+        "suggestion": "Use the Barclays Platinum Credit Card to cover the shortfall of 7,906.29 GBP.",
+        "details": "This card offers a high credit limit of 7,500 GBP, which you can use to cover the additional cost. The remaining shortfall can be covered by increasing the usage of your travel investment and savings accounts."
+      },
+      "step_2": {
+        "suggestion": "Consider using your travel savings account as a supplementary source.",
+        "details": "Your Travel Savings Plan is worth 5,200 GBP, which can be utilized in part to cover the gap."
+      },
+      "step_3": {
+        "suggestion": "If the shortfall still exists, you can consider a personal loan from Barclays to bridge any further gap.",
+        "details": "You can apply for a personal loan at competitive interest rates to make up for any final amount needed for your trip."
+      }
+    },
+    "funding_details": {
+      "credit_card": {
+        "type": "Barclays Platinum",
+        "available_limit": 7500.00,
+        "suggested_usage": 7500.00,
+        "interest_rate": "18.9% APR"
+      },
+      "savings_account": {
+        "type": "Travel Savings Plan",
+        "current_balance": 5200.00,
+        "suggested_usage": 406.29,
+        "interest_impact": "Minimal due to short-term withdrawal"
+      },
+      "personal_loan": {
+        "available": true,
+        "max_amount": 15000.00,
+        "interest_rate": "3.9% APR",
+        "term_options": ["12 months", "24 months", "36 months"]
+      }
+    },
+    "total_funded": 32000,
+    "total_available": 32000,
+    "summary": {
+      "message": "We have optimized your financial plan to ensure you can cover your upgraded expenses for a Business Class flight and 5-star hotel accommodation. Using your Barclays products effectively, you can ensure that all costs are fully covered with minimal disruption."
+    }
+  }
+} 
