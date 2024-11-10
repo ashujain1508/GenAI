@@ -24,7 +24,7 @@ const CurrentAccount: React.FC<CurrentAccountProps> = ({ onSliderChange }) => {
   };
 
   return (
-    <Card sx={{ boxShadow: 3, height: '100%', display: 'flex', flexDirection: 'column' }}>
+    <Card sx={{ boxShadow: 1, height: '100%', display: 'flex', flexDirection: 'column' }}>
       <CardHeader 
         title={
           <Typography variant="subtitle1" sx={{ 
@@ -35,7 +35,7 @@ const CurrentAccount: React.FC<CurrentAccountProps> = ({ onSliderChange }) => {
           </Typography>
         }
         sx={{ 
-          backgroundColor: 'rgba(11, 47, 94, 0.03)',
+          // backgroundColor: 'rgba(11, 47, 94, 0.03)',
           borderBottom: '1px solid rgba(0, 0, 0, 0.12)',
           p: 2
         }} 
