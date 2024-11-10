@@ -4,7 +4,8 @@ import Person2RoundedIcon from '@mui/icons-material/Person2Rounded';
 import SearchRoundedIcon from '@mui/icons-material/SearchRounded';
 import LogoutRoundedIcon from '@mui/icons-material/LogoutRounded';
 import './Navigation.css';
-
+import barclaysLogo from '../../assets/Barclays-logo.svg';
+import eagleLogo from '../../assets/Eagle_RGB_Cyan_Large.svg';
 const Navigation = () => {
   const handleLogout = () => {
     // Add your logout logic here
@@ -14,7 +15,8 @@ const Navigation = () => {
   return (
     <header className="header">
       <div className="header__left">
-        <img src="/src/assets/barclays.png" alt="Logo" className="header__logo" />
+        <img src={eagleLogo} alt="Logo" className="header__logo" />
+        <img src={barclaysLogo} alt="Logo" className="header__logo" />
       </div>
       <div className="header__right">
         <div className="header__item">
