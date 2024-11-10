@@ -10,6 +10,7 @@ import TravelCover from '../components/TravelCover';
 import SendIcon from '@mui/icons-material/Send';
 import InsuranceRecommendations from '../components/InsuranceRecomendations';
 import OfferingsTabs from '../components/OfferingsTabs';
+import ThirdPartyOfferings from '../components/ThirdPartyOfferings';
 
 
 
@@ -84,6 +85,9 @@ const Travel = () => {
                 <Grid item xs={12} md={12}>
                     <OfferingsTabs />
                 </Grid>
+                  <Grid item xs={12} md={12}>
+                      <ThirdPartyOfferings />
+                  </Grid>
                 
             </Grid>
 

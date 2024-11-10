@@ -4,6 +4,8 @@ import travelInsuranceIcon from '../assets/travel-insurance.avif';
 import forexIcon from '../assets/forex.jpg';
 import creditCardIcon from '../assets/card.avif';
 import loanIcon from '../assets/loan.jpg';
+import cc from '../assets/cc.jpeg';
+import forex from '../assets/forex.jpeg';
 import TravelInsurance from './Offerings/TravelInsurance';
 import { creditCardData, forexData, loanData, travelInsuranceData } from '../data/offeringsData';
 import Offerings from './Offerings/Offerings';
@@ -67,7 +69,7 @@ const OfferingsTabs = () => {
           <Tab
             icon={
               <img
-                src={forexIcon}
+                src={forex}
                 alt="Currency & Forex Services"
                 style={{
                   width: '80px',
@@ -84,7 +86,7 @@ const OfferingsTabs = () => {
           <Tab
             icon={
               <img
-                src={creditCardIcon}
+                src={cc}
                 alt="Credit Card Travel Benefits"
                 style={{
                   width: '80px',

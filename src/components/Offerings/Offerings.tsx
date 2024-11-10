@@ -3,8 +3,7 @@ import {
     Box,
     Typography,
     Button,
-    Grid,
-    Paper,
+
     Container,
     List,
     ListItem,
@@ -117,7 +116,7 @@ const Offerings: React.FC<OfferingProps> = ({
                                 minWidth: 300,
                                 maxWidth: 300,
                                 flex: '0 0 auto',
-                                height: 450, // Fixed height for all cards
+                                height: 'auto', // Changed to auto
                                 display: 'flex',
                                 flexDirection: 'column'
                             }}
@@ -170,16 +169,30 @@ const Offerings: React.FC<OfferingProps> = ({
                                     </List>
                                 </Box>
 
-                                {/* Button */}
-                                <Box sx={{ mt: 2 }}>
+                                {/* Recommended Plan Button */}
+                                <Box sx={{ mt: 2, display: 'flex', flexDirection: 'column', gap: 1 }}>
+                                    <Typography
+                                        variant="subtitle2"
+                                        color="primary"
+                                        sx={{ textAlign: 'center' }}
+                                    >
+                                        Recommended Plan:
+                                    </Typography>
                                     <Button
-                                        variant="contained"
+                                        variant="contained"  // Changed from outlined to contained
                                         color="primary"
                                         href={recommendation.link}
                                         target="_blank"
-                                        fullWidth
+                                        rel="noopener noreferrer"
+                                        endIcon={<ArrowForwardIcon />}  // Added arrow icon
+                                        sx={{
+                                            textTransform: 'none',
+                                            whiteSpace: 'normal',
+                                            height: 'auto',
+                                            py: 1
+                                        }}
                                     >
-                                        {ctaText}
+                                        {recommendation.recommendedPlan}
                                     </Button>
                                 </Box>
                             </CardContent>
