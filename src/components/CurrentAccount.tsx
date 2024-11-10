@@ -1,59 +1,115 @@
-import { Box, Card, CardHeader, Divider, Stack, Typography } from "@mui/material";
-import Eagle from '../assets/Eagle_RGB_Cyan_Large.svg';
+import { Box, Card, CardHeader, Divider, Stack, Typography, Slider } from "@mui/material";
+import React, { useState } from "react";
+import browsingHistory from '../data/browsingHistory.json';
 
-const CurrentAccount = () => {
+interface CurrentAccountProps {
+  onSliderChange: (total: number) => void;
+}
+
+const CurrentAccount: React.FC<CurrentAccountProps> = ({ onSliderChange }) => {
+  const nextExpenses = browsingHistory.browsing_history.browsing_summary.next_expense;
+  const totalBudget = Object.values(nextExpenses).reduce((sum, value) => sum + value, 0);
+  
+  const [sliderValues, setSliderValues] = useState(nextExpenses);
+
+  const handleSliderChange = (category: string, newValue: number) => {
+    const newSliderValues = {
+      ...sliderValues,
+      [category]: newValue
+    };
+    setSliderValues(newSliderValues);
+    
+    const newTotal = Object.values(newSliderValues).reduce((sum, value) => sum + value, 0);
+    onSliderChange(newTotal);
+  };
+
   return (
-    <Card>
-      <CardHeader title="Current Account" sx={{ height: '100%', textAlign: 'left'}} />
+    <Card sx={{ boxShadow: 3, height: '100%', display: 'flex', flexDirection: 'column' }}>
+      <CardHeader 
+        title={
+          <Typography variant="subtitle1" sx={{ 
+            color: '#0B2F5E',
+            fontWeight: 600,
+          }}>
+            Your Expected Budget
+          </Typography>
+        }
+        sx={{ 
+          backgroundColor: 'rgba(11, 47, 94, 0.03)',
+          borderBottom: '1px solid rgba(0, 0, 0, 0.12)',
+          p: 2
+        }} 
+      />
 
-        <Card variant="outlined" sx={{ borderRadius: 2 , m: 1.5}}>
+      <Box sx={{ p: 2, flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'space-around' }}>
+        <Stack spacing={1}>
+          {Object.entries(nextExpenses).map(([category, amount], index) => (
+            <Box key={category}>
+              <Stack 
+                direction="row" 
+                sx={{ 
+                  justifyContent: 'space-between', 
+                  alignItems: 'center', 
+                  mb: 0.5
+                }}
+              >
+                <Typography 
+                  variant="caption" 
+                  sx={{ 
+                    textTransform: 'capitalize',
+                    color: '#0B2F5E',
+                    fontWeight: 500
+                  }}
+                >
+                  {category}
+                </Typography>
+                <Typography 
+                  variant="caption" 
+                  sx={{ 
+                    fontWeight: 600,
+                    color: '#0B2F5E'
+                  }}
+                >
+                  £{sliderValues[category as keyof typeof sliderValues].toLocaleString()}
+                </Typography>
+              </Stack>
 
-            <Box sx={{ p: 3 }}>
-                <Stack direction="row" sx={{justifyContent: 'space-between', alignItems: 'center'}}>
-                    <Stack direction="row" spacing={2} alignItems="center">
-                        <Box
-                            component="img"
-                            src={Eagle}
-                            alt="Barclays Eagle"
-                            sx={{ width: 30, height: 30 }}
-                        />
-                        <Typography variant="h6">THE BARCLAYS BANK ACCOUNT</Typography>
-                    </Stack>
-                    <Typography variant="h6">£1000</Typography>
-                </Stack>
-            </Box>
-            <Divider />
-            <Box sx={{ p: 3 }}>
-                <Stack direction="row" sx={{justifyContent: 'space-between', alignItems: 'center'}}>
-                    <Stack direction="row" spacing={2} alignItems="center">
-                        <Box
-                            component="img"
-                            src={Eagle}
-                            alt="Barclays Eagle"
-                            sx={{ width: 30, height: 30 }}
-                        />
-                        <Typography variant="h6">BARCLAYS BASIC CURRENT AC</Typography>
-                    </Stack>
-                    <Typography variant="h6">£1000</Typography>
-                </Stack>
-            </Box>
-            <Divider />
-            <Box sx={{ p: 3}}>
-                <Stack direction="row" sx={{justifyContent: 'space-between', alignItems: 'center'}}>
-                    <Stack direction="row" spacing={2} alignItems="center">
-                        <Box
-                            component="img"
-                            src={Eagle}
-                            alt="Barclays Eagle"
-                            sx={{ width: 30, height: 30 }}
-                        />
-                        <Typography variant="h6">BARCLAYS BASIC CURRENT AC</Typography>
-                    </Stack>
-                    <Typography variant="h6">£1000</Typography>
-                </Stack>
-            </Box>
+              <Slider
+                value={sliderValues[category as keyof typeof sliderValues]}
+                onChange={(_, newValue) => handleSliderChange(category, newValue as number)}
+                min={0}
+                max={totalBudget}
+                size="small"
+                sx={{
+                  color: '#0B2F5E',
+                  height: 4,
+                  padding: '6px 0',
+                  '& .MuiSlider-thumb': {
+                    width: 12,
+                    height: 12,
+                    '&:hover, &.Mui-focusVisible': {
+                      boxShadow: '0 0 0 6px rgba(11, 47, 94, 0.16)'
+                    }
+                  },
+                  '& .MuiSlider-track': {
+                    height: 4,
+                    borderRadius: 2
+                  },
+                  '& .MuiSlider-rail': {
+                    height: 4,
+                    borderRadius: 2,
+                    backgroundColor: 'rgba(11, 47, 94, 0.1)'
+                  }
+                }}
+              />
 
-        </Card>
+              {index < Object.entries(nextExpenses).length - 1 && (
+                <Divider sx={{ my: 0.5 }} />
+              )}
+            </Box>
+          ))}
+        </Stack>
+      </Box>
     </Card>
   );
 };

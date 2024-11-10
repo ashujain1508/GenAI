@@ -10,15 +10,18 @@ import CardActions from '@mui/material/CardActions';
 import travelImage from '../../assets/travel.jpg';
 import homeLoanImage from '../../assets/HomeLoan.jpg';
 import creditCardImage from '../../assets/creditcard.jpg';
+import { useNavigate } from 'react-router-dom';
 
 export default function MultiProductCard() {
+  const navigate = useNavigate();
+
   const products = [
     {
       id: 1,
       title: "Travel",
       description: "Discover Exclusive Travel Reward.Enjoy personalized offers, lounge access, and rewards with every trip. Your travel card is designed to make every journey smoother and more rewarding.",
       image: travelImage,
-      link: "#"
+      link: "/travel"
     },
     {
       id: 2,
@@ -35,6 +38,14 @@ export default function MultiProductCard() {
       link: "https://www.barclays.co.uk/credit-cards/"
     }
   ];
+
+  const handleCardClick = (productId: number, link: string) => {
+    if (productId === 1) {
+      navigate(link);
+    } else {
+      window.open(link, '_blank', 'noopener,noreferrer');
+    }
+  };
 
   return (
     <Box 
@@ -63,7 +74,7 @@ export default function MultiProductCard() {
             }
           }}
         >
-          <CardActionArea>
+          <CardActionArea onClick={() => handleCardClick(product.id, product.link)}>
             <CardMedia
               component="img"
               height="140"
@@ -83,9 +94,7 @@ export default function MultiProductCard() {
           <CardActions sx={{ padding: '16px', justifyContent: 'flex-start' }}>
             <Button 
               size="small" 
-              href={product.link}
-              target="_blank"
-              rel="noopener noreferrer"
+              onClick={() => handleCardClick(product.id, product.link)}
               sx={{ 
                 backgroundColor: '#0B2F5E',
                 color: 'white',
