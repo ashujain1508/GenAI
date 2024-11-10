@@ -1,0 +1,62 @@
+{
+  "insurance_recommendations": [
+    {
+      "insurance_type": "Travel Insurance",
+      "description": "Comprehensive coverage for travel disruptions, flight cancellations, medical emergencies, and lost baggage during your trip to Europe.",
+      "benefits": [
+        "Coverage for medical emergencies abroad",
+        "Flight delay and cancellation protection",
+        "Lost baggage reimbursement",
+        "24/7 emergency support"
+      ],
+      "recommended_plan": "Barclays Travel Insurance - European Coverage",
+      "link": "https://www.barclays.co.uk/travel-insurance"
+    },
+    {
+      "insurance_type": "Medical Insurance",
+      "description": "Health coverage for medical expenses incurred while traveling across Europe.",
+      "benefits": [
+        "Emergency medical treatment",
+        "Hospital stays and surgeries",
+        "Repatriation if necessary",
+        "Coverage for pre-existing conditions (subject to terms)"
+      ],
+      "recommended_plan": "Barclays Medical Insurance - Europe Specific",
+      "link": "https://www.barclays.co.uk/medical-insurance"
+    },
+    {
+      "insurance_type": "Car Rental Insurance",
+      "description": "Insurance coverage for rental cars in Europe, protecting you from damage, theft, and third-party claims.",
+      "benefits": [
+        "Damage protection for rental cars",
+        "Theft coverage",
+        "Third-party liability protection",
+        "No excess fee on claims"
+      ],
+      "recommended_plan": "Barclays Car Rental Insurance",
+      "link": "https://www.barclays.co.uk/car-rental-insurance"
+    },
+    {
+      "insurance_type": "Trip Cancellation Insurance",
+      "description": "Coverage to reimburse costs incurred due to trip cancellations caused by unforeseen circumstances.",
+      "benefits": [
+        "Refund for non-refundable trip expenses",
+        "Coverage for emergencies or sudden illness",
+        "Reimbursement for unexpected trip interruptions"
+      ],
+      "recommended_plan": "Barclays Trip Cancellation Insurance",
+      "link": "https://www.barclays.co.uk/trip-cancellation-insurance"
+    },
+    {
+      "insurance_type": "Personal Liability Insurance",
+      "description": "Covers personal liability and accidental damage claims while traveling, including damage to property or injury to others.",
+      "benefits": [
+        "Protection against legal claims",
+        "Coverage for accidental injury to others",
+        "Damage caused to property while abroad"
+      ],
+      "recommended_plan": "Barclays Personal Liability Insurance",
+      "link": "https://www.barclays.co.uk/personal-liability-insurance"
+    }
+  ]
+}
