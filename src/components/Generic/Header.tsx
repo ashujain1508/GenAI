@@ -1,18 +1,20 @@
-import { AppBar, Toolbar, Container, Button, Box, IconButton, Drawer, List, ListItem, ListItemText } from '@mui/material';
+import { AppBar, Toolbar, Container, Box, IconButton, Typography } from '@mui/material';
 import { Menu as MenuIcon } from '@mui/icons-material';
+import CircleNotificationsRoundedIcon from '@mui/icons-material/CircleNotificationsRounded';
+import Person2RoundedIcon from '@mui/icons-material/Person2Rounded';
+import SearchRoundedIcon from '@mui/icons-material/SearchRounded';
+import LogoutRoundedIcon from '@mui/icons-material/LogoutRounded';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import barclaysLogo from '../../assets/barclays-logo.svg';
 import eaglr_RGB from '../../assets/Eagle_RGB_Cyan_Large.svg';
 
-
-
 const Header = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
   const navigate = useNavigate();
 
-  const handleDrawerToggle = () => {
-    setMobileOpen(!mobileOpen);
+  const handleLogout = () => {
+    console.log('Logging out...');
   };
 
   return (
@@ -37,13 +39,12 @@ const Header = () => {
             >
               <img
                 src={eaglr_RGB}
-                alt="Barclays Logo"
+                alt="Eagle Logo"
                 style={{
                   height: '25px',
                   marginRight: '10px'
                 }}
               />
-
               <img
                 src={barclaysLogo}
                 alt="Barclays Logo"
@@ -54,16 +55,40 @@ const Header = () => {
               />
             </Box>
 
+            {/* Navigation Icons */}
+            <Box sx={{ 
+              display: { xs: 'none', md: 'flex' }, 
+              gap: 3, 
+              alignItems: 'center',
+              color: '#0B2F5E'
+            }}>
+              <Box sx={{ display: 'flex', alignItems: 'center', cursor: 'pointer' }}>
+                <CircleNotificationsRoundedIcon />
+                <Typography sx={{ ml: 1, color: '#0B2F5E' }}>Notification</Typography>
+              </Box>
+              <Box sx={{ display: 'flex', alignItems: 'center', cursor: 'pointer' }}>
+                <Person2RoundedIcon />
+                <Typography sx={{ ml: 1, color: '#0B2F5E' }}>Profile</Typography>
+              </Box>
+              <Box sx={{ display: 'flex', alignItems: 'center', cursor: 'pointer' }}>
+                <SearchRoundedIcon />
+                <Typography sx={{ ml: 1, color: '#0B2F5E' }}>Search</Typography>
+              </Box>
+              <Box sx={{ display: 'flex', alignItems: 'center', cursor: 'pointer' }} onClick={handleLogout}>
+                <LogoutRoundedIcon />
+                <Typography sx={{ ml: 1, color: '#0B2F5E' }}>Logout</Typography>
+              </Box>
+            </Box>
+
             {/* Mobile Menu Icon */}
             <IconButton
               color="inherit"
               aria-label="open drawer"
               edge="start"
-              onClick={handleDrawerToggle}
+              onClick={() => setMobileOpen(!mobileOpen)}
               sx={{
-                mr: 2,
                 display: { md: 'none' },
-                color: 'text.primary'
+                color: '#0B2F5E'
               }}
             >
               <MenuIcon />
