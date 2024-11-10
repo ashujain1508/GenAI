@@ -78,9 +78,9 @@ const Travel = () => {
                 <Grid item xs={12} md={8}>
                     <CurrentAccount />
                 </Grid>
-                <Grid item xs={12} md={12}>
+                  {/* <Grid item xs={12} md={12}>
                     <InsuranceRecommendations />
-                </Grid>
+                </Grid> */}
                 <Grid item xs={12} md={12}>
                     <OfferingsTabs />
                 </Grid>

@@ -1,6 +1,12 @@
 import React, { useState } from 'react';
 import { Tabs, Tab, Box, Typography } from '@mui/material';
 import travelInsuranceIcon from '../assets/travel-insurance.avif';
+import forexIcon from '../assets/forex.jpg';
+import creditCardIcon from '../assets/card.avif';
+import loanIcon from '../assets/loan.jpg';
+import TravelInsurance from './Offerings/TravelInsurance';
+import { creditCardData, forexData, loanData, travelInsuranceData } from '../data/offeringsData';
+import Offerings from './Offerings/Offerings';
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -40,29 +46,6 @@ const OfferingsTabs = () => {
           value={value} 
           onChange={handleChange}
           centered
-          sx={{
-            backgroundColor: '#00395D',
-            '& .MuiTabs-flexContainer': {
-              justifyContent: 'center',
-              height: '160px',
-            },
-            '& .MuiTab-root': {
-              color: '#FFFFFF',
-              fontSize: '18px',
-              textTransform: 'none',
-              height: '160px',
-              padding: '20px',
-              '&.Mui-selected': {
-                color: '#00B7FF',
-                fontWeight: 'bold',
-              },
-            },
-            '& .MuiTabs-indicator': {
-              backgroundColor: '#00B7FF',
-              height: 4,
-            }
-          }}
-          aria-label="financial services tabs"
         >
           <Tab 
             icon={
@@ -70,31 +53,93 @@ const OfferingsTabs = () => {
                 src={travelInsuranceIcon} 
                 alt="Travel Insurance"
                 style={{ 
-                  height: '72px',
-                  marginBottom: '16px'
+                  width: '80px',
+                  height: '80px',
+                  objectFit: 'cover',
+                  marginBottom: '12px'
                 }} 
               />
             }
             iconPosition="top"
             label="Travel Insurance"
+            sx={{ minHeight: '120px' }}
           />
-          <Tab label="Currency & Forex Services" />
-          <Tab label="Credit Card Travel Benefits" />
-          <Tab label="Loan & Financial Options" />
+          <Tab
+            icon={
+              <img
+                src={forexIcon}
+                alt="Currency & Forex Services"
+                style={{
+                  width: '80px',
+                  height: '80px',
+                  objectFit: 'cover',
+                  marginBottom: '12px'
+                }}
+              />
+            }
+            iconPosition="top"
+            label="Currency & Forex Services"
+            sx={{ minHeight: '120px' }}
+          />
+          <Tab
+            icon={
+              <img
+                src={creditCardIcon}
+                alt="Credit Card Travel Benefits"
+                style={{
+                  width: '80px',
+                  height: '80px',
+                  objectFit: 'cover',
+                  marginBottom: '12px'
+                }}
+              />
+            }
+            iconPosition="top"
+            label="Credit Card Travel Benefits"
+            sx={{ minHeight: '120px' }}
+          />
+          <Tab
+            icon={
+              <img
+                src={loanIcon}
+                alt="Loan & Financial Options"
+                style={{
+                  width: '80px',
+                  height: '80px',
+                  objectFit: 'cover',
+                  marginBottom: '12px'
+                }}
+              />
+            }
+            iconPosition="top"
+            label="Loan & Financial Options"
+            sx={{ minHeight: '120px' }}
+          />
         </Tabs>
       </Box>
 
       <TabPanel value={value} index={0}>
-        Content for Travel Insurance
+        <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
+          <Offerings {...travelInsuranceData} />
+        </Box>
       </TabPanel>
       <TabPanel value={value} index={1}>
-        Content for Currency & Forex Services
+        <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
+
+          <Offerings {...forexData} />
+        </Box>
       </TabPanel>
       <TabPanel value={value} index={2}>
-        Content for Credit Card Travel Benefits
+        <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
+
+          <Offerings {...creditCardData} />
+        </Box>
       </TabPanel>
       <TabPanel value={value} index={3}>
-        Content for Loan & Financial Options
+        <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
+
+          <Offerings {...loanData} />
+        </Box>
       </TabPanel>
     </Box>
   );
