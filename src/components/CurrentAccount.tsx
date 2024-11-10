@@ -7,10 +7,10 @@ interface CurrentAccountProps {
 }
 
 const CurrentAccount: React.FC<CurrentAccountProps> = ({ onSliderChange }) => {
-  const nextExpenses = browsingHistory.browsing_history.browsing_summary.next_expense;
-  const totalBudget = Object.values(nextExpenses).reduce((sum, value) => sum + value, 0);
+  const nextExpenses = browsingHistory.customer_financial_plan.browsing_history.browsing_summary.next_expense;
+  const totalBudget = Object.values(nextExpenses).reduce((sum: number, value: number) => sum + value, 0);
   
-  const [sliderValues, setSliderValues] = useState(nextExpenses);
+  const [sliderValues, setSliderValues] = useState<Record<string, number>>(nextExpenses);
 
   const handleSliderChange = (category: string, newValue: number) => {
     const newSliderValues = {
@@ -19,7 +19,7 @@ const CurrentAccount: React.FC<CurrentAccountProps> = ({ onSliderChange }) => {
     };
     setSliderValues(newSliderValues);
     
-    const newTotal = Object.values(newSliderValues).reduce((sum, value) => sum + value, 0);
+    const newTotal = Object.values(newSliderValues).reduce((sum: number, value: number) => sum + value, 0);
     onSliderChange(newTotal);
   };
 
@@ -70,12 +70,12 @@ const CurrentAccount: React.FC<CurrentAccountProps> = ({ onSliderChange }) => {
                     color: '#0B2F5E'
                   }}
                 >
-                  £{sliderValues[category as keyof typeof sliderValues].toLocaleString()}
+                  £{sliderValues[category].toLocaleString()}
                 </Typography>
               </Stack>
 
               <Slider
-                value={sliderValues[category as keyof typeof sliderValues]}
+                value={sliderValues[category]}
                 onChange={(_, newValue) => handleSliderChange(category, newValue as number)}
                 min={0}
                 max={totalBudget}

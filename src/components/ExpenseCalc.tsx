@@ -1,4 +1,4 @@
-import { Box, Card, CardContent, Typography } from '@mui/material'
+import { Box, Card, Typography } from '@mui/material'
 import React from 'react'
 import ApexChart from 'react-apexcharts'
 import browsingHistory from '../data/browsingHistory.json'
@@ -20,10 +20,10 @@ const generateChartColors = (count: number) => {
 };
 
 // Get expense data from browsing history
-const nextExpenses = browsingHistory.browsing_history.browsing_summary.next_expense;
+const nextExpenses = browsingHistory.customer_financial_plan.browsing_history.browsing_summary.next_expense;
 const expenseData = Object.entries(nextExpenses).map(([label, value]) => ({
     label,
-    value
+    value: value as number
 }));
 
 // Mapping the data to be used in the donut chart
@@ -68,17 +68,17 @@ const data = {
                             show: true,
                             fontSize: '12px',
                             color: '#333',
-                            formatter: (val: any) => `£${parseInt(val).toLocaleString()}`
+                            formatter: (val: number) => `£${val.toLocaleString()}`
                         }
                     }
                 }
             }
         },
         chart: {
-            type: 'donut',
+            type: 'donut' as const,
         },
         legend: {
-            position: 'bottom',
+            position: 'bottom' as const,
             fontSize: '12px',
             formatter: function(label: string, opts: any) {
                 return `${label}: £${opts.w.globals.series[opts.seriesIndex].toLocaleString()}`
@@ -91,7 +91,7 @@ const data = {
 };
 
 const ExpenseCalc = () => {
-  const totalExpense = data.series.reduce((sum, value) => sum + value, 0);
+  const totalExpense = data.series.reduce((sum: number, value: number) => sum + value, 0);
 
   return (
     <Card>
@@ -111,7 +111,7 @@ const ExpenseCalc = () => {
             <ApexChart 
                 type="donut" 
                 series={data.series} 
-                options={data.options as ApexCharts.ApexOptions}
+                options={data.options}
                 height={280}
                 width="100%"
             />
