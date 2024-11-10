@@ -15,22 +15,22 @@ export default function MultiProductCard() {
   const products = [
     {
       id: 1,
-      title: "Travel Solutions",
-      description: "Plan your dream vacation with our exclusive travel packages and personalized itineraries.",
+      title: "Travel",
+      description: "Discover Exclusive Travel Reward.Enjoy personalized offers, lounge access, and rewards with every trip. Your travel card is designed to make every journey smoother and more rewarding.",
       image: travelImage,
       link: "#"
     },
     {
       id: 2,
-      title: "Home Loan",
-      description: "Make your dream home a reality with our competitive home loan options and flexible repayment plans.",
+      title: "Mortgage",
+      description: "Get loan offers customized to your needs, with flexible terms and faster approvals.",
       image: homeLoanImage,
       link: "https://www.barclays.co.uk/mortgages/"
     },
     {
       id: 3,
       title: "Credit Card",
-      description: "Enjoy exclusive benefits, rewards, and secure transactions with our premium credit cards.",
+      description: "Bank Cards That Match Your Lifestyle.Enjoy tailored rewards, exclusive benefits, and personalized spending limits designed just for you.",
       image: creditCardImage,
       link: "https://www.barclays.co.uk/credit-cards/"
     }
