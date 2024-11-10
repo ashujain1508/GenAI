@@ -1,0 +1,86 @@
+{
+  "browsing_history": {
+    "user_id": "BAR123456",
+    "timestamp": "2024-03-20T10:30:00Z",
+    "browsing_summary": {
+      "most_visited_locations": ["USA", "London", "Paris", "Dubai","India"],
+      "frequent_activity": "Searching for flights, travel insurance, forex cards, and travel tips",
+      "trip_types": [
+        "Family Vacation",
+        "Business",
+        "Solo Adventure"
+      ],
+      "next_expense": {
+        "Flight": 6000,
+        "Accommodation": 10000,
+        "Food": 5000,
+        "Transport": 8000,
+        "Entertainment": 13000
+      }
+    },
+    "detailed_history": {
+      "searches": [
+        {
+          "date": "2024-03-19",
+          "location": "USA",
+          "category": "Flights",
+          "frequency": 5
+        },
+        {
+          "date": "2024-03-18",
+          "location": "London",
+          "category": "Hotels",
+          "frequency": 3
+        },
+        {
+          "date": "2024-03-17",
+          "location": "Paris",
+          "category": "Travel Insurance",
+          "frequency": 2
+        }
+      ],
+      "clicked_products": [
+        {
+          "product": "Travel Insurance Premium",
+          "timestamp": "2024-03-19T15:45:00Z",
+          "interaction_time": "5m"
+        },
+        {
+          "product": "Forex Card",
+          "timestamp": "2024-03-18T11:20:00Z",
+          "interaction_time": "3m"
+        },
+        {
+          "product": "Flight Booking",
+          "timestamp": "2024-03-17T09:10:00Z",
+          "interaction_time": "8m"
+        }
+      ],
+      "saved_items": [
+        {
+          "type": "Flight",
+          "destination": "New York",
+          "saved_date": "2024-03-19",
+          "price": 785
+        },
+        {
+          "type": "Hotel",
+          "destination": "London",
+          "saved_date": "2024-03-18",
+          "price": 250
+        }
+      ]
+    },
+    "preferences": {
+      "preferred_airlines": ["British Airways", "American Airlines", "Emirates"],
+      "preferred_hotels": ["Hilton", "Marriott", "Hyatt"],
+      "budget_range": {
+        "min": 1000,
+        "max": 5000,
+        "currency": "GBP"
+      },
+      "travel_class": "Business",
+      "accommodation_type": "4-5 Star Hotels"
+    }
+  }
+} 
