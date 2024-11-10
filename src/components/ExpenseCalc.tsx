@@ -1,6 +1,7 @@
-import { Box, Card, CardContent, CardHeader, Typography } from '@mui/material'
+import { Box, Card, CardContent, Typography } from '@mui/material'
 import React from 'react'
 import ApexChart from 'react-apexcharts'
+import browsingHistory from '../data/browsingHistory.json'
 
 // Function to generate distinct colors based on array length
 const generateChartColors = (count: number) => {
@@ -15,31 +16,15 @@ const generateChartColors = (count: number) => {
         '#002D47'  // Midnight Blue
     ];
 
-    // If count is less than or equal to baseColors length, return only needed colors
-    if (count <= baseColors.length) {
-        return baseColors.slice(0, count);
-    }
-
-    // If we need more colors, generate them by interpolating between existing ones
-    const colors = [...baseColors];
-    while (colors.length < count) {
-        const index = colors.length % baseColors.length;
-        const baseColor = baseColors[index];
-        // Create a slightly different shade
-        const hslColor = `hsl(${195 + (colors.length * 20)}, 80%, ${40 + (colors.length * 5)}%)`;
-        colors.push(hslColor);
-    }
-
-    return colors;
+    return baseColors.slice(0, count);
 };
 
-const expenseData = [
-    { label: 'Flights', value: 1200 },
-    { label: 'Accommodation', value: 1800 },
-    { label: 'Food', value: 500 },
-    { label: 'Transportation', value: 300 },
-    { label: 'Entertainment', value: 700 },
-];
+// Get expense data from browsing history
+const nextExpenses = browsingHistory.browsing_history.browsing_summary.next_expense;
+const expenseData = Object.entries(nextExpenses).map(([label, value]) => ({
+    label,
+    value
+}));
 
 // Mapping the data to be used in the donut chart
 const data = {
@@ -49,13 +34,13 @@ const data = {
         colors: generateChartColors(expenseData.length),
         tooltip: {
             enabled: true,
-            theme: 'dark',
+            theme: 'light',
             fillSeriesColor: false,
             style: {
                 fontSize: '12px',
             },
             y: {
-                formatter: (val: number) => `£${val}`,
+                formatter: (val: number) => `£${val.toLocaleString()}`
             },
             custom: ({ series, seriesIndex, dataPointIndex, w }: any) => {
                 return `<div class="custom-tooltip" style="
@@ -64,70 +49,90 @@ const data = {
                     color: white;
                     border-radius: 4px;
                 ">
-                    <span>${w.config.labels[seriesIndex]}: £${series[seriesIndex]}</span>
+                    <span>${w.config.labels[seriesIndex]}: £${series[seriesIndex].toLocaleString()}</span>
                 </div>`
             }
         },
         plotOptions: {
             pie: {
                 donut: {
+                    size: '70%',
                     labels: {
                         show: true,
                         name: {
                             show: true,
-                            color: '#FFFFFF'
+                            fontSize: '12px',
+                            color: '#333'
                         },
                         value: {
                             show: true,
-                            color: '#FFFFFF'
-                        },
-                        total: {
-                            show: true,
-                            color: '#FFFFFF'
+                            fontSize: '12px',
+                            color: '#333',
+                            formatter: (val: any) => `£${parseInt(val).toLocaleString()}`
                         }
                     }
                 }
             }
         },
-        theme: {
-            mode: 'light',
-            palette: 'palette1',
-            monochrome: {
-                enabled: false,
-            }
-        },
-        title: {
-            align: 'center' as 'left' | 'right' | 'center', // Correctly typed align value
-            style: {
-                fontSize: '20px',
-                fontWeight: 'bold',
-            },
+        chart: {
+            type: 'donut',
         },
         legend: {
-            position: 'bottom' as 'bottom', // Ensure the position is correctly typed
+            position: 'bottom',
+            fontSize: '12px',
+            formatter: function(label: string, opts: any) {
+                return `${label}: £${opts.w.globals.series[opts.seriesIndex].toLocaleString()}`
+            }
         },
         dataLabels: {
-            enabled: false,
-            formatter: (val: number) => `£${val}`, // Displaying the value in pounds
+            enabled: false
         },
-    },
+    }
 };
 
 const ExpenseCalc = () => {
+  const totalExpense = data.series.reduce((sum, value) => sum + value, 0);
+
   return (
     <Card>
-       
-        
-          <Box 
-          
-              sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', m: 1 }}
-          >
-            <ApexChart type="donut" series={data.series} options={data.options} />
-              <Box sx={{ p: 2, textAlign: 'center' }}>
-                  <Typography variant="h6">
-                      Total Expense calculated by the AI: £{data.series.reduce((sum, value) => sum + value, 0)}
-                  </Typography>
-              </Box>
+        <Box 
+            sx={{ 
+                display: 'flex', 
+                flexDirection: 'column', 
+                justifyContent: 'center', 
+                alignItems: 'center',
+                p: 2
+            }}
+        >
+            <Typography variant="subtitle1" color="primary" gutterBottom>
+                Estimated Travel Expenses
+            </Typography>
+            
+            <ApexChart 
+                type="donut" 
+                series={data.series} 
+                options={data.options as ApexCharts.ApexOptions}
+                height={280}
+                width="100%"
+            />
+            
+            <Box sx={{ textAlign: 'center', mt: 1 }}>
+                <Typography 
+                    variant="subtitle2" 
+                    sx={{ 
+                        display: 'block',
+                        mb: 0.5,
+                        fontWeight: 700,
+                        color: '#0B2F5E',
+                        letterSpacing: '0.5px'
+                    }}
+                >
+                    AI PREDICTED EXPENSE
+                </Typography>
+                <Typography variant="subtitle1" color="primary">
+                    Total: £{totalExpense.toLocaleString()}
+                </Typography>
+            </Box>
         </Box>
     </Card>
   )
