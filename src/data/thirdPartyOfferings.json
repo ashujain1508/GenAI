@@ -1,0 +1,66 @@
+{
+  "customer_recommendations": {
+    "third_party_product_recommendations": [
+      {
+        "product_type": "Travel Insurance - AXA",
+        "description": "Hello {{userName}}, we recommend you this product: comprehensive travel insurance from AXA tailored for your adventures.",
+        "benefits": [
+          "COVID-19 cover included as standard",
+          "24/7 medical assistance helpline",
+          "Cover for lost or stolen baggage",
+          "Winter sports cover available"
+        ],
+        "recommended_product": "AXA Travel Insurance",
+        "link": "https://www.barclays.co.uk/insurance/travel-insurance/"
+      },
+      {
+        "product_type": "Airport Experiences - DragonPass",
+        "description": "Access to airport lounges worldwide and exclusive dining discounts with DragonPass Premier.",
+        "benefits": [
+          "Access to 1,200+ airport lounges",
+          "Discounts at 600+ airport restaurants",
+          "Spa and retail discounts",
+          "Free digital membership card"
+        ],
+        "recommended_product": "DragonPass Premier",
+        "link": "https://www.barclays.co.uk/current-accounts/bank-account/dragonpass-premier/"
+      },
+      {
+        "product_type": "RAC Breakdown Cover",
+        "description": "24/7 roadside assistance and vehicle recovery services from the RAC, with exclusive rates for Barclays customers.",
+        "benefits": [
+          "UK-wide breakdown assistance",
+          "Roadside repairs",
+          "Recovery to any UK destination",
+          "Alternative transport options"
+        ],
+        "recommended_product": "RAC Breakdown Cover",
+        "link": "https://www.barclays.co.uk/insurance/car-insurance/rac-breakdown-cover/"
+      },
+      {
+        "product_type": "Car Insurance - Direct Line",
+        "description": "Comprehensive car insurance through Direct Line with optional extras to suit your needs.",
+        "benefits": [
+          "Comprehensive cover available",
+          "Courtesy car with comprehensive cover",
+          "24/7 emergency helpline",
+          "Flexible payment options"
+        ],
+        "recommended_product": "Direct Line Car Insurance",
+        "link": "https://www.barclays.co.uk/insurance/car-insurance/"
+      },
+      {
+        "product_type": "Home Insurance - Aviva",
+        "description": "Buildings and contents insurance from Aviva to protect your home and belongings.",
+        "benefits": [
+          "Buildings and contents cover",
+          "New for old replacement",
+          "Alternative accommodation if needed",
+          "Optional accidental damage cover"
+        ],
+        "recommended_product": "Aviva Home Insurance",
+        "link": "https://www.barclays.co.uk/insurance/home-insurance/"
+      }
+    ]
+  }
+}
