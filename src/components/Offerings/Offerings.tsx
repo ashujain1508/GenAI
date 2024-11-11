@@ -44,6 +44,7 @@ interface Recommendation {
     features: Feature[];
     iconName?: string;
     link?: string;
+    personalized_message?: string;
 }
 
 interface OfferingProps {
@@ -102,15 +103,6 @@ const Offerings: React.FC<OfferingProps> = ({
                         }}
                     >
                         <TipsAndUpdates sx={{ color: 'white', fontSize: '1.5rem' }} />
-                        <AutoAwesome
-                            sx={{
-                                position: 'absolute',
-                                top: -8,
-                                right: -8,
-                                color: '#FFD700',
-                                fontSize: '1.2rem'
-                            }}
-                        />
                     </Box>
                     <Box sx={{ flex: 1 }}>
                         <Typography
@@ -160,7 +152,10 @@ const Offerings: React.FC<OfferingProps> = ({
                     {recommendations.map((recommendation, index) => (
                         <Card
                             key={index}
+                            variant="outlined"
                             sx={{
+                                borderRadius: '16px',
+                                border: '1px solid #00AEEF',
                                 minWidth: 300,
                                 maxWidth: 300,
                                 flex: '0 0 auto',
@@ -182,7 +177,7 @@ const Offerings: React.FC<OfferingProps> = ({
                                         {recommendation.product_name}
                                     </Typography>
                                     <Typography variant="body2" color="text.secondary" sx={{ mb: 2 }}>
-                                        {recommendation.description}
+                                        {recommendation.personalized_message || recommendation.description}
                                     </Typography>
                                 </Box>
 

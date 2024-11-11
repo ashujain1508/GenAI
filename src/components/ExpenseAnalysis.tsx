@@ -7,13 +7,62 @@ import {
   Grid,
   styled
 } from '@mui/material';
-import browsingHistory from '../data/browsingHistory.json';
+
 import shortfall from '../data/shortfall.json';
-import financialProducts from '../data/financialProducts.json';
+// import financialProducts from '../data/financialProducts.json';
+import userData from '../data/userData.json';
 
 interface ExpenseAnalysisProps {
   show: boolean;
   currentExpense: number;
+}
+
+interface FundingSource {
+  account_name: string;
+  amount_used: string;
+}
+
+interface Recommendation {
+  expense_type: string;
+  amount: string;
+  funding_source?: string;
+  funding_sources?: FundingSource[];
+  message: string;
+}
+
+interface TravelInvestment {
+  investment_type: string;
+  investment_amount: string;
+  remaining_expenses: string;
+  suggested_use: string;
+}
+
+interface CreditCard {
+  credit_card_name: string;
+  available_credit: string;
+  remaining_expenses: string;
+  message: string;
+}
+
+interface FutureFinancing {
+  option_name: string;
+  message: string;
+}
+
+interface AdditionalOptions {
+  travel_investment: TravelInvestment;
+  credit_card: CreditCard;
+  future_financing: FutureFinancing;
+}
+
+interface FinancialRecommendations {
+  recommendations: Recommendation[];
+  additional_options: AdditionalOptions;
+  summary: {
+    total_expenses: string;
+    total_available_funds: string;
+    message: string;
+  };
 }
 
 const formatFundSource = (source: string) => {
@@ -26,32 +75,82 @@ const formatFundSource = (source: string) => {
 const ExpenseAnalysis: React.FC<ExpenseAnalysisProps> = ({ show, currentExpense }) => {
   if (!show) return null;
 
-  const accounts = browsingHistory.customer_financial_plan.customer_details.accounts;
-  const travelInvestment = browsingHistory.customer_financial_plan.customer_details.travel_investment;
-  const recommendedPlan = browsingHistory.customer_financial_plan.recommended_financial_plan;
+  const accounts = userData.userDetails.accounts;
+  const travelInvestment = userData.userDetails.travel_investment;
+  const financialProducts = userData.financial_recommendations;
+  // const recommendedPlan = userData.userDetails.recommended_financial_plan;
   
   const totalAvailableFunds = accounts.reduce((sum, account) => sum + account.availableBalance, 0) 
     + travelInvestment.currentValue;
 
   const isShortfall = currentExpense > totalAvailableFunds;
   
+  const renderOptionContent = (key: string, option: TravelInvestment | CreditCard | FutureFinancing) => {
+    if (key === 'travel_investment') {
+      const travelOption = option as TravelInvestment;
+      return (
+        <>
+          <Typography variant="h6" color="#0B2F5E" gutterBottom sx={{ fontWeight: 600 }}>
+            {travelOption.investment_type}
+          </Typography>
+          <Typography variant="body2" sx={{ mb: 1 }}>
+            Available Amount: {travelOption.investment_amount}
+          </Typography>
+          <Typography variant="body2" color="text.secondary">
+            {travelOption.suggested_use}
+          </Typography>
+        </>
+      );
+    }
+
+    if (key === 'credit_card') {
+      const creditOption = option as CreditCard;
+      return (
+        <>
+          <Typography variant="h6" color="#0B2F5E" gutterBottom sx={{ fontWeight: 600 }}>
+            {creditOption.credit_card_name}
+          </Typography>
+          <Typography variant="body2" sx={{ mb: 1 }}>
+            Available Credit: {creditOption.available_credit}
+          </Typography>
+          <Typography variant="body2" color="text.secondary">
+            {creditOption.message}
+          </Typography>
+        </>
+      );
+    }
+
+    if (key === 'future_financing') {
+      const financeOption = option as FutureFinancing;
+      return (
+        <>
+          <Typography variant="h6" color="#0B2F5E" gutterBottom sx={{ fontWeight: 600 }}>
+            {financeOption.option_name}
+          </Typography>
+          <Typography variant="body2" color="text.secondary">
+            {financeOption.message}
+          </Typography>
+        </>
+      );
+    }
+
+    return null;
+  };
+
   return (
     <Box sx={{ 
       mt: 4, 
       mb: 4,
       width: '100%',
-      px: 2
+
     }}>
       <Card
         variant="outlined"
         sx={{
           borderRadius: '16px',
-          border: '2px solid #0B2F5E',
+          border: '1px solid #00AEEF',
           p: 3,
-          '&:hover': {
-            border: '2px solid #0B2F5E',
-            boxShadow: '0 0 0 1px #0B2F5E'
-          }
+
         }}
       >
         {isShortfall ? (
@@ -170,7 +269,7 @@ const ExpenseAnalysis: React.FC<ExpenseAnalysisProps> = ({ show, currentExpense 
             </Typography>
 
             <Grid container spacing={2} sx={{ mb: 4 }}>
-              {financialProducts.financial_recommendations.recommendations.map((recommendation, index) => (
+                {financialProducts.recommendations.map((recommendation, index) => (
                 <Grid item xs={12} md={3} key={index}>
                   <Card 
                     variant="outlined"
@@ -266,7 +365,7 @@ const ExpenseAnalysis: React.FC<ExpenseAnalysisProps> = ({ show, currentExpense 
                 gap: 2,
                 mb: 3
               }}>
-                {Object.entries(financialProducts.financial_recommendations.additional_options).map(([key, option]) => (
+                  {Object.entries(financialProducts.additional_options).map(([key, option]) => (
                   <Card 
                     key={key}
                     variant="outlined" 
@@ -283,31 +382,7 @@ const ExpenseAnalysis: React.FC<ExpenseAnalysisProps> = ({ show, currentExpense 
                     }}
                   >
                     <CardContent>
-                      <Typography 
-                        variant="h6" 
-                        color="#0B2F5E" 
-                        gutterBottom
-                        sx={{ fontWeight: 600 }}
-                      >
-                        {key === 'travel_investment' && option.investment_type}
-                        {key === 'credit_card' && option.credit_card_name}
-                        {key === 'future_financing' && option.option_name}
-                      </Typography>
-                      {key === 'travel_investment' && (
-                        <Typography variant="body2" sx={{ mb: 1 }}>
-                          Available Amount: {option.investment_amount}
-                        </Typography>
-                      )}
-                      {key === 'credit_card' && (
-                        <Typography variant="body2" sx={{ mb: 1 }}>
-                          Available Credit: {option.available_credit}
-                        </Typography>
-                      )}
-                      <Typography variant="body2" color="text.secondary">
-                        {key === 'travel_investment' && option.suggested_use}
-                        {key === 'credit_card' && option.message}
-                        {key === 'future_financing' && option.message}
-                      </Typography>
+                        {renderOptionContent(key, option)}
                     </CardContent>
                   </Card>
                 ))}
@@ -319,7 +394,7 @@ const ExpenseAnalysis: React.FC<ExpenseAnalysisProps> = ({ show, currentExpense 
                   textAlign: 'center'
                 }}
               >
-                {financialProducts.financial_recommendations.summary.message}
+                  {financialProducts.summary.message}
               </Typography>
             </Box>
           </>

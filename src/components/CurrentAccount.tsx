@@ -24,7 +24,10 @@ const CurrentAccount: React.FC<CurrentAccountProps> = ({ onSliderChange }) => {
   };
 
   return (
-    <Card sx={{ boxShadow: 1, height: '100%', display: 'flex', flexDirection: 'column' }} >
+    <Card variant="outlined" sx={{
+      borderRadius: '16px',
+      border: '1px solid #00AEEF',
+    }}>
       <CardHeader 
         title={
           <Typography variant="subtitle1" sx={{ 

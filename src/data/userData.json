@@ -4,7 +4,56 @@
         "lastName": "Doe",
         "email": "john.doe@example.com",
         "phone": "+447481234567",
-        "bankAccount": "Barclays Premier Account"
+        "bankAccount": "Barclays Premier Account",
+        "accounts": [
+            {
+                "id": 1,
+                "accountType": "THE BARCLAYS BANK ACCOUNT",
+                "accountNumber": "**4789",
+                "availableBalance": 10000
+            },
+            {
+                "id": 2,
+                "accountType": "BARCLAYS BASIC CURRENT ACCOUNT",
+                "accountNumber": "**6234",
+                "availableBalance": 10000
+            },
+            {
+                "id": 3,
+                "accountType": "BARCLAYS BASIC SAVINGS ACCOUNT",
+                "accountNumber": "**9012",
+                "availableBalance": 10000
+            }
+        ],
+        "travel_investment": {
+            "investmentAmount": 5000.00,
+            "investmentType": "Travel Savings Plan",
+            "currentValue": 40000.00,
+            "investmentGrowth": "4% annual return"
+        },
+        "credit": {
+            "creditCardType": "Barclays Platinum",
+            "creditLimit": 10000.00,
+            "currentBalance": 2500.00,
+            "availableCredit": 7500.00,
+            "paymentDue": 1500.00,
+            "interestRate": "18% APR"
+        },
+        "browsing_summary": {
+            "most_visited_locations": [
+                "USA",
+                "London",
+                "Paris",
+                "Dubai",
+                "India"
+            ],
+            "frequent_activity": "Searching for flights, travel insurance, forex cards, and travel tips",
+            "trip_types": [
+                "Family Vacation",
+                "Business",
+                "Solo Adventure"
+            ]
+        }
     },
     "travelCountryData": {
         "countryName": "Europe",
@@ -36,241 +85,221 @@
         },
         "currency": "EUR"
     },
-    "TravelInsuranceRecommendations": {
-        "personalized_message": "Since John, you already have a comprehensive travel policy, we recommend the following Barclays options to add greater flexibility and peace of mind:",
+"TravelInsuranceRecommendations": {
+    "personalized_message": "Since John, you already have a comprehensive travel policy, we recommend the following Barclays options to add greater flexibility and peace of mind:",
+    "recommendations": [
+        {
+            "product_name": "Enhanced Travel Protection Plus",
+            "description": "Expand and strengthen your current insurance with targeted travel benefits to cover more of the unexpected.",
+            "personalized_message": "John, this product provides extended protection for your journey, helping you stay covered in case of any emergencies.",
+            "features": [
+                {
+                    "feature_name": "Expanded Medical Coverage for Europe",
+                    "description": "Increased limits for emergency treatments, providing added support during extended stays or unforeseen health needs."
+                },
+                {
+                    "feature_name": "High-Value Baggage Coverage",
+                    "description": "Protects against loss or damage to electronics, jewelry, or other valuable items."
+                },
+                {
+                    "feature_name": "Extended Trip Cancellation Coverage",
+                    "description": "Supports unforeseen changes like policy shifts or transport strikes."
+                }
+            ]
+        },
+        {
+            "product_name": "Barclays Overseas Health & Accident Coverage",
+            "description": "Designed for frequent international travelers, offering protection and assistance wherever you go.",
+            "personalized_message": "John, given your frequent international travels, this insurance provides coverage wherever you go, ensuring peace of mind no matter the destination.",
+            "features": [
+                {
+                    "feature_name": "Multi-Country Coverage",
+                    "description": "Covers neighboring countries outside of the Schengen area, ideal for last-minute trips."
+                },
+                {
+                    "feature_name": "24/7 Emergency Assistance",
+                    "description": "Access to multilingual services for health and emergency coordination."
+                }
+            ]
+        },
+        {
+            "product_name": "International Travel Fraud & Assistance Package",
+            "description": "Stay protected from unexpected situations with financial and identity support when needed.",
+            "personalized_message": "John, stay secure during your travels with comprehensive fraud protection and assistance, ensuring you're supported in case of emergencies.",
+            "features": [
+                {
+                    "feature_name": "Travel-Linked Card Protection",
+                    "description": "Covers unauthorized charges for added security while abroad."
+                },
+                {
+                    "feature_name": "Document Replacement Support",
+                    "description": "Swift help with replacing lost passports or visas."
+                }
+            ]
+        },
+        {
+            "product_name": "Flexible Short-Term Travel Insurance",
+            "description": "Ideal for spontaneous travel, offering flexible short-term coverage for one-off trips.",
+            "personalized_message": "John, this product allows you to customize your coverage for short-term trips, ensuring flexibility when plans change unexpectedly.",
+            "features": [
+                {
+                    "feature_name": "Customizable Periods & Pay-Per-Day Option",
+                    "description": "Only pay for the days you need coverage, providing a cost-effective choice for quick or last-minute trips."
+                }
+            ]
+        },
+        {
+            "product_name": "Emergency Savings Access Service",
+            "description": "Easily access funds and loyalty points in case of an unexpected expense while traveling.",
+            "personalized_message": "John, in case of unexpected expenses during your travels, this service allows you to access funds and loyalty points to cover emergency costs.",
+            "features": [
+                {
+                    "feature_name": "Loyalty Points for Travel Expenses",
+                    "description": "Redeem loyalty points for essential travel costs, such as extra hotel nights or new bookings."
+                },
+                {
+                    "feature_name": "Vacation Fund Integration",
+                    "description": "Use funds from your vacation savings goal for emergencies, penalty-free."
+                }
+            ]
+        }
+    ]
+},
+"ForexAndExchangeRecommendations": {
+    "personalized_message": "Since you may be traveling to multiple European destinations, we recommend the following Barclays services to ensure you get the best exchange rates and avoid unnecessary fees:",
+    "recommendations": [
+        {
+            "product_name": "Barclays Foreign Exchange Service",
+            "description": "A convenient way to get foreign currency before your trip or while abroad, with competitive exchange rates.",
+            "personalized_message": "John, for your European trip, you can order currency at competitive rates with no commission fees, saving you time and money.",
+            "features": [
+                {
+                    "feature_name": "No Commission Fees",
+                    "description": "Avoid extra charges when purchasing foreign currency through Barclays."
+                },
+                {
+                    "feature_name": "Pre-Order and Pick-Up Service",
+                    "description": "Order foreign currency online in advance and pick it up at a branch or get it delivered to your home."
+                },
+                {
+                    "feature_name": "Currency Conversion at Competitive Rates",
+                    "description": "Receive the best exchange rates for a range of currencies to help you manage your spending abroad."
+                }
+            ]
+        },
+        {
+            "product_name": "Barclays Travel Money Card",
+            "description": "A prepaid currency card that allows you to load multiple currencies onto one card, minimizing exchange rate fluctuations.",
+            "personalized_message": "John, the Travel Money Card helps you lock in exchange rates before your trip, reducing risks associated with currency fluctuations.",
+            "features": [
+                {
+                    "feature_name": "Lock-in Exchange Rates",
+                    "description": "Pre-load your card with foreign currency at a fixed exchange rate, avoiding unexpected fluctuations."
+                },
+                {
+                    "feature_name": "Global Acceptance",
+                    "description": "Use the card for payments at millions of locations worldwide, wherever Visa is accepted."
+                },
+                {
+                    "feature_name": "Withdraw Cash at ATMs",
+                    "description": "Access local currency conveniently with fee-free withdrawals at Barclays ATMs abroad."
+                }
+            ]
+        },
+        {
+            "product_name": "Barclays Platinum Credit Card",
+            "description": "Enjoy the benefits of zero foreign transaction fees and exclusive travel perks with your Barclays Platinum Credit Card.",
+            "personalized_message": "John, with your frequent travel, the Barclays Platinum Credit Card can save you money on foreign transactions while earning rewards for your purchases.",
+            "features": [
+                {
+                    "feature_name": "No Foreign Transaction Fees",
+                    "description": "Use your Barclays Platinum Credit Card abroad without worrying about additional foreign transaction fees."
+                },
+                {
+                    "feature_name": "Travel Rewards",
+                    "description": "Earn rewards on travel-related purchases to offset the cost of your next trip."
+                },
+                {
+                    "feature_name": "Emergency Cash Advance",
+                    "description": "Access emergency funds through your credit card if you lose access to cash while traveling."
+                }
+            ]
+        },
+        {
+            "product_name": "Barclays Mobile Banking App for Currency Exchange",
+            "description": "Manage your foreign exchange needs directly through your phone, offering currency exchange and transfers at your fingertips.",
+            "personalized_message": "John, use the Barclays app to manage currency exchange and transfers on the go, ensuring you’re always in control of your travel finances.",
+            "features": [
+                {
+                    "feature_name": "Real-Time Currency Conversion",
+                    "description": "Check live exchange rates and complete transactions on the go."
+                },
+                {
+                    "feature_name": "Quick Transfer to Overseas Accounts",
+                    "description": "Transfer funds internationally with ease using Barclays' competitive rates directly through the app."
+                }
+            ]
+        }
+    ]
+},
+    "financial_recommendations": {
         "recommendations": [
             {
-                "product_name": "Enhanced Travel Protection Plus",
-                "description": "Expand and strengthen your current insurance with targeted travel benefits to cover more of the unexpected.",
-                "features": [
-                    {
-                        "feature_name": "Expanded Medical Coverage for Europe",
-                        "description": "Increased limits for emergency treatments, providing added support during extended stays or unforeseen health needs."
-                    },
-                    {
-                        "feature_name": "High-Value Baggage Coverage",
-                        "description": "Protects against loss or damage to electronics, jewelry, or other valuable items."
-                    },
-                    {
-                        "feature_name": "Extended Trip Cancellation Coverage",
-                        "description": "Supports unforeseen changes like policy shifts or transport strikes."
-                    }
-                ]
+                "expense_type": "Flight",
+                "amount": "£6,000",
+                "funding_source": "BARCLAYS BASIC CURRENT ACCOUNT",
+                "message": "You have sufficient available balance to cover this cost comfortably."
             },
             {
-                "product_name": "Barclays Overseas Health & Accident Coverage",
-                "description": "Designed for frequent international travelers, offering protection and assistance wherever you go.",
-                "features": [
-                    {
-                        "feature_name": "Multi-Country Coverage",
-                        "description": "Covers neighboring countries outside of the Schengen area, ideal for last-minute trips."
-                    },
-                    {
-                        "feature_name": "24/7 Emergency Assistance",
-                        "description": "Access to multilingual services for health and emergency coordination."
-                    }
-                ]
+                "expense_type": "Accommodation",
+                "amount": "£10,000",
+                "funding_source": "BARCLAYS BASIC CURRENT ACCOUNT",
+                "message": "We suggest using the BARCLAYS BASIC CURRENT ACCOUNT for your accommodation expenses."
             },
             {
-                "product_name": "International Travel Fraud & Assistance Package",
-                "description": "Stay protected from unexpected situations with financial and identity support when needed.",
-                "features": [
+                "expense_type": "Food",
+                "amount": "£5,000",
+                "funding_sources": [
                     {
-                        "feature_name": "Travel-Linked Card Protection",
-                        "description": "Covers unauthorized charges for added security while abroad."
+                        "account_name": "THE BARCLAYS BANK ACCOUNT",
+                        "amount_used": "£2,547.82"
                     },
                     {
-                        "feature_name": "Document Replacement Support",
-                        "description": "Swift help with replacing lost passports or visas."
+                        "account_name": "BARCLAYS BASIC SAVINGS ACCOUNT",
+                        "amount_used": "£2,452.18"
                     }
-                ]
+                ],
+                "message": "This will ensure all food-related expenses are comfortably covered."
             },
             {
-                "product_name": "Flexible Short-Term Travel Insurance",
-                "description": "Ideal for spontaneous travel, offering flexible short-term coverage for one-off trips.",
-                "features": [
-                    {
-                        "feature_name": "Customizable Periods & Pay-Per-Day Option",
-                        "description": "Only pay for the days you need coverage, providing a cost-effective choice for quick or last-minute trips."
-                    }
-                ]
-            },
-            {
-                "product_name": "Emergency Savings Access Service",
-                "description": "Easily access funds and loyalty points in case of an unexpected expense while traveling.",
-                "features": [
-                    {
-                        "feature_name": "Loyalty Points for Travel Expenses",
-                        "description": "Redeem loyalty points for essential travel costs, such as extra hotel nights or new bookings."
-                    },
-                    {
-                        "feature_name": "Vacation Fund Integration",
-                        "description": "Use funds from your vacation savings goal for emergencies, penalty-free."
-                    }
-                ]
+                "expense_type": "Transport",
+                "amount": "£8,000",
+                "funding_source": "BARCLAYS BASIC CURRENT ACCOUNT",
+                "message": "We recommend using your BARCLAYS BASIC CURRENT ACCOUNT for this expense as well."
             }
-        ]
-    },
-    "ForexAndExchangeRecommendations": {
-        "personalized_message": "Since you may be traveling to multiple European destinations, we recommend the following Barclays services to ensure you get the best exchange rates and avoid unnecessary fees:",
-        "recommendations": [
-            {
-                "product_name": "Barclays Foreign Exchange Service",
-                "description": "A convenient way to get foreign currency before your trip or while abroad, with competitive exchange rates.",
-                "features": [
-                    {
-                        "feature_name": "No Commission Fees",
-                        "description": "Avoid extra charges when purchasing foreign currency through Barclays."
-                    },
-                    {
-                        "feature_name": "Pre-Order and Pick-Up Service",
-                        "description": "Order foreign currency online in advance and pick it up at a branch or get it delivered to your home."
-                    },
-                    {
-                        "feature_name": "Currency Conversion at Competitive Rates",
-                        "description": "Receive the best exchange rates for a range of currencies to help you manage your spending abroad."
-                    }
-                ]
+        ],
+        "additional_options": {
+            "travel_investment": {
+                "investment_type": "Travel Savings Plan",
+                "investment_amount": "£5,200",
+                "remaining_expenses": "£13,000",
+                "suggested_use": "Use the full £5,200 from this investment to cover part of the entertainment and other discretionary costs."
             },
-            {
-                "product_name": "Barclays Travel Money Card",
-                "description": "A prepaid currency card that allows you to load multiple currencies onto one card, minimizing exchange rate fluctuations.",
-                "features": [
-                    {
-                        "feature_name": "Lock-in Exchange Rates",
-                        "description": "Pre-load your card with foreign currency at a fixed exchange rate, avoiding unexpected fluctuations."
-                    },
-                    {
-                        "feature_name": "Global Acceptance",
-                        "description": "Use the card for payments at millions of locations worldwide, wherever Visa is accepted."
-                    },
-                    {
-                        "feature_name": "Withdraw Cash at ATMs",
-                        "description": "Access local currency conveniently with fee-free withdrawals at Barclays ATMs abroad."
-                    }
-                ]
+            "credit_card": {
+                "credit_card_name": "Barclays Platinum Credit Card",
+                "available_credit": "£7,500",
+                "remaining_expenses": "£7,800",
+                "message": "Use your credit card for the remaining entertainment expenses, and ensure to make timely payments to avoid excessive interest. The 18% APR is applicable."
             },
-            {
-                "product_name": "Barclays Platinum Credit Card",
-                "description": "Enjoy the benefits of zero foreign transaction fees and exclusive travel perks with your Barclays Platinum Credit Card.",
-                "features": [
-                    {
-                        "feature_name": "No Foreign Transaction Fees",
-                        "description": "Use your Barclays Platinum Credit Card abroad without worrying about additional foreign transaction fees."
-                    },
-                    {
-                        "feature_name": "Travel Rewards",
-                        "description": "Earn rewards on travel-related purchases to offset the cost of your next trip."
-                    },
-                    {
-                        "feature_name": "Emergency Cash Advance",
-                        "description": "Access emergency funds through your credit card if you lose access to cash while traveling."
-                    }
-                ]
-            },
-            {
-                "product_name": "Barclays Mobile Banking App for Currency Exchange",
-                "description": "Manage your foreign exchange needs directly through your phone, offering currency exchange and transfers at your fingertips.",
-                "features": [
-                    {
-                        "feature_name": "Real-Time Currency Conversion",
-                        "description": "Check live exchange rates and complete transactions on the go."
-                    },
-                    {
-                        "feature_name": "Quick Transfer to Overseas Accounts",
-                        "description": "Transfer funds internationally with ease using Barclays' competitive rates directly through the app."
-                    }
-                ]
+            "future_financing": {
+                "option_name": "Personal Loan",
+                "message": "If required, consider a personal loan as a supplementary option. This can be discussed with our team if needed to ensure smooth financial management for your trip."
             }
-        ]
-    },
-    "CreditCardAndTravelBenefitsRecommendations": {
-        "personalized_message": "To maximize your travel experience and make the most of your spending while abroad, we recommend the following Barclays credit card options that offer exclusive travel benefits and enhanced rewards:",
-        "recommendations": [
-            {
-                "product_name": "Barclays Platinum Credit Card",
-                "description": "Designed for frequent travelers, this card offers a range of travel-related perks, rewards, and protections.",
-                "features": [
-                    {
-                        "feature_name": "No Foreign Transaction Fees",
-                        "description": "Save on foreign transaction charges, making it ideal for purchases while traveling abroad."
-                    },
-                    {
-                        "feature_name": "Travel Insurance",
-                        "description": "Benefit from free travel insurance covering trip cancellations, medical emergencies, and lost baggage."
-                    },
-                    {
-                        "feature_name": "Airport Lounge Access",
-                        "description": "Enjoy complimentary access to a wide range of airport lounges globally for a more comfortable travel experience."
-                    },
-                    {
-                        "feature_name": "Reward Points on Travel Spending",
-                        "description": "Earn extra reward points on travel-related expenses such as flights, accommodation, and transportation, which can be redeemed for travel rewards."
-                    }
-                ]
-            },
-            {
-                "product_name": "Barclays Premier Rewards Credit Card",
-                "description": "With an emphasis on luxury and exclusive rewards, the Barclays Premier Rewards card is perfect for those who want to elevate their travel experiences.",
-                "features": [
-                    {
-                        "feature_name": "Exclusive Travel Rewards",
-                        "description": "Earn significant reward points for every travel-related purchase, which can be redeemed for flight tickets, hotel stays, and other travel benefits."
-                    },
-                    {
-                        "feature_name": "Complimentary Travel Insurance",
-                        "description": "Enjoy comprehensive travel insurance including coverage for delays, cancellations, and emergency medical expenses."
-                    },
-                    {
-                        "feature_name": "VIP Concierge Service",
-                        "description": "Access to a dedicated concierge service for booking travel, dining, and entertainment experiences globally."
-                    },
-                    {
-                        "feature_name": "Special Airport Lounge Access",
-                        "description": "Access to luxury airport lounges worldwide for a comfortable and relaxing pre-flight experience."
-                    }
-                ]
-            },
-            {
-                "product_name": "Barclays Travel Rewards Credit Card",
-                "description": "A great choice for those seeking high travel rewards and low fees for international purchases.",
-                "features": [
-                    {
-                        "feature_name": "Travel Rewards on Every Purchase",
-                        "description": "Earn rewards points on all purchases, especially on travel-related spending, which can be redeemed for travel vouchers or flights."
-                    },
-                    {
-                        "feature_name": "Zero Foreign Transaction Fees",
-                        "description": "No extra charges on foreign transactions, ensuring that you get the best value when making purchases abroad."
-                    },
-                    {
-                        "feature_name": "Comprehensive Travel Insurance",
-                        "description": "Travel with peace of mind, knowing you're covered for medical emergencies, trip delays, and lost luggage."
-                    },
-                    {
-                        "feature_name": "Access to Travel Discounts",
-                        "description": "Get access to special discounts on hotels, flights, car rentals, and other travel services."
-                    }
-                ]
-            },
-            {
-                "product_name": "Barclays Gold Credit Card",
-                "description": "A well-rounded card for those who want to earn rewards while enjoying travel benefits.",
-                "features": [
-                    {
-                        "feature_name": "Earn Rewards on Travel & Everyday Purchases",
-                        "description": "Earn reward points not just on travel-related purchases, but on everyday spending, giving you more flexibility for redeeming rewards."
-                    },
-                    {
-                        "feature_name": "Complimentary Travel Accident Insurance",
-                        "description": "Receive coverage for accidents while traveling, ensuring extra protection during your trip."
-                    },
-                    {
-                        "feature_name": "Travel Discounts & Offers",
-                        "description": "Enjoy exclusive discounts on travel-related services, such as hotels, flights, and car hire."
-                    }
-                ]
-            }
-        ]
+        },
+        "summary": {
+            "total_expenses": "£42,000",
+            "total_available_funds": "£42,000",
+            "message": "Your travel expenses are well-covered through a combination of current accounts, savings, and investment funds. Additional credit options are available if needed."
+        }
     }
 }

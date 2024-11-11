@@ -11,10 +11,10 @@ import PaymentsIcon from '@mui/icons-material/Payments';
 import SwapHorizIcon from '@mui/icons-material/SwapHoriz';
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 import './AccountDetails.css';
-import browsingHistory from '../data/browsingHistory.json';
+import userData from '../data/userData.json';
 
 const AccountDetails = () => {
-  const accounts = browsingHistory.customer_financial_plan.customer_details.accounts;
+  const accounts = userData.userDetails.accounts;
 
   return (
     <Box sx={{ width: '100%' }}>

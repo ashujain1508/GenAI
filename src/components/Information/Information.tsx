@@ -1,31 +1,18 @@
 import React from 'react';
 import { Box } from '@mui/material';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
-import customerData from '../../data/customerData.json';
-import hyperpersonalisationInfo from '../../data/hyperpersonalisationInfo.json';
 import { Card, CardContent, Typography, Button } from '@mui/material';
 import FlightIcon from '@mui/icons-material/Flight';
 import { useNavigate } from 'react-router-dom';
 import travelingInformationBackground from '../../assets/travelinginformationbackground.jpeg';
+import userData from '../../data/userData.json';
 
-interface CustomerData {
-  customer: {
-    personalInfo: {
-      firstName: string;
-    };
-  };
-}
 
-interface HyperpersonalisationInfo {
-  personalizedInfo: {
-    description: string;
-  };
-}
 
 const Information: React.FC = () => {
   const navigate = useNavigate();
-  const { firstName } = (customerData as CustomerData).customer.personalInfo;
-  const { description } = (hyperpersonalisationInfo as HyperpersonalisationInfo).personalizedInfo;
+  const firstName = userData.userDetails.firstName
+  const description = `Your dream ${userData.travelCountryData.countryName} escape is here – filled with tailored offers and experiences made just for you.`
 
   const handleExploreClick = () => {
     navigate('/travel');

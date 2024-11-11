@@ -94,7 +94,10 @@ const ExpenseCalc = () => {
   const totalExpense = data.series.reduce((sum: number, value: number) => sum + value, 0);
 
   return (
-    <Card>
+      <Card variant="outlined" sx={{
+          borderRadius: '16px',
+          border: '1px solid #00AEEF',
+      }}>
         <Box 
             sx={{ 
                 display: 'flex', 

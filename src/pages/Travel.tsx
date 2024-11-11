@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import InputPopup from '../components/InputPopup'
-import { Autocomplete, Box, Button, Card, Grid, IconButton, TextField, Typography } from '@mui/material';
+import { Autocomplete, Box, Button, Card, Grid, TextField, Typography } from '@mui/material';
 import TravelCover from '../components/TravelCover';
 import SendIcon from '@mui/icons-material/Send';
 import OfferingsTabs from '../components/OfferingsTabs';
@@ -9,13 +9,20 @@ import ThirdPartyOfferings from '../components/ThirdPartyOfferings';
 
 import ExpenseCalc from '../components/ExpenseCalc';
 import CurrentAccount from '../components/CurrentAccount';
-import browsingHistory from '../data/browsingHistory.json';
 import ExpenseAnalysis from '../components/ExpenseAnalysis';
-import { Update } from '@mui/icons-material';
+import userData from '../data/userData.json';
+import { getPersonalizedTravelData } from '../services/openAIService';
+
+// Add this type definition before the Travel component
+interface UserDataResponse {
+    recommendations: string[];
+    expenses: Record<string, number>;
+    // Add any other required properties from getPersonalizedTravelData
+}
 
 const Travel = () => {
-    const tripTypes = browsingHistory.customer_financial_plan.browsing_history.browsing_summary.trip_types;
-    const countries = browsingHistory.customer_financial_plan.browsing_history.browsing_summary.most_visited_locations;
+    const tripTypes = userData.userDetails.browsing_summary.trip_types;
+    const countries = userData.userDetails.browsing_summary.most_visited_locations;
 
     const [selectedCountry, setSelectedCountry] = useState<string|null>(null);
     const [selectedTripType, setSelectedTripType] = useState<string|null>(tripTypes[0]);
@@ -23,9 +30,11 @@ const Travel = () => {
     const [totalBudget, setTotalBudget] = useState<number>(0);
     const [showAnalysis, setShowAnalysis] = useState(true);
     const [analysisExpense, setAnalysisExpense] = useState<number>(0);
+    const [travelData, setTravelData] = useState<UserDataResponse | null>(null);
 
     useEffect(() => {
-        const nextExpenses = browsingHistory.customer_financial_plan.browsing_history.browsing_summary.next_expense;
+        setSelectedCountry(userData.travelCountryData.countryName);
+        const nextExpenses = userData.aiPredictedExpenses.nextExpenses;
         const total = Object.values(nextExpenses).reduce((sum, value) => sum + (value as number), 0);
         setTotalBudget(total);
         setAnalysisExpense(total);
@@ -39,19 +48,35 @@ const Travel = () => {
         setTotalBudget(newTotal);
     };
 
-    const handleShowAnalysis = () => {
+    const fetchPersonalizedData = async () => {
+        try {
+            const userContext = {
+                userId: "user123", // Replace with actual user ID
+                selectedCountry: selectedCountry || "",
+                tripType: selectedTripType || "",
+                budget: totalBudget
+            };
+
+            const personalizedData = await getPersonalizedTravelData(userContext);
+
+            // Update your state with the received data
+            // You might want to create new state variables to store this data
+            // setTravelData(personalizedData);
+            console.log(personalizedData);
+
+        } catch (error) {
+            console.error('Error fetching personalized data:', error);
+            // Handle error appropriately
+        }
+    };
+
+    const handleShowAnalysis = async () => {
         setAnalysisExpense(totalBudget);
+        await fetchPersonalizedData();
     };
 
     return (
         <div>
-            {<InputPopup 
-                setSelectedCountry={setSelectedCountry} 
-                selectedCountry={selectedCountry} 
-                onClose={handleClose} 
-                dialogOpen={open}
-            />} 
-
             {selectedCountry && 
                 <Grid container spacing={2}>
                     <Grid item xs={12} md={12}>
@@ -65,7 +90,13 @@ const Travel = () => {
                     </Grid>
                     <Grid item xs={12}>
 
-                        <Card sx={{ p: 2, mt: 2 }} variant='outlined'>
+                        <Card variant='outlined' sx={{
+                            borderRadius: '16px',
+                            border: '1px solid #00AEEF',
+                            p: 3,
+                            mt: 2,
+
+                        }}>
 
                             <Typography variant="h6" sx={{
                                 color: 'primary.main',
@@ -128,23 +159,25 @@ const Travel = () => {
                                         }
                                     }}
                                 />
-                                <IconButton 
+                                <Button
+                                    variant="outlined"
                                     onClick={handleShowAnalysis}
-                                    sx={{ 
-                                        transform: 'scale(1.2)',
+                                    sx={{
                                         color: '#0B2F5E',
-                                        backgroundColor: 'rgba(11, 47, 94, 0.05)',
+                                        borderColor: '#0B2F5E',
                                         '&:hover': {
+                                            borderColor: '#0B2F5E',
                                             backgroundColor: 'rgba(11, 47, 94, 0.1)'
                                         }
                                     }}
+                                    endIcon={<SendIcon />}
                                 >
-                                    Update
+                                    Analyze
                                 </Button>
                             </Box>
                         </Card>
                     </Grid>
-                    <Grid item xs={12}>
+                    <Grid item xs={12} md={12}>
                         <ExpenseAnalysis 
                             show={showAnalysis}
                             currentExpense={analysisExpense}

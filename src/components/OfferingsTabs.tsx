@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
-import { Tabs, Tab, Box } from '@mui/material';
+import { Tabs, Tab, Box, Typography, Paper } from '@mui/material';
 import travelInsuranceIcon from '../assets/travel-insurance.avif';
 import forex from '../assets/forex.jpeg';
 import cc from '../assets/cc.jpeg';
 import loanIcon from '../assets/loan.jpg';
-import { creditCardData, forexData, loanData } from '../data/offeringsData';
 import Offerings from './Offerings/Offerings';
 import userData from '../data/userData.json';
+import ChatIcon from '@mui/icons-material/Chat';
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -37,20 +37,6 @@ const OfferingsTabs = () => {
 
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
     setValue(newValue);
-  };
-
-  // Transform the recommendations data to match Offerings component format
-  const travelInsuranceOfferings = {
-    title: "Travel Insurance Recommendations",
-    description: userData.TravelInsuranceRecommendations.personalized_message,
-    items: userData.TravelInsuranceRecommendations.recommendations.map(rec => ({
-      title: rec.product_name,
-      description: rec.description,
-      features: rec.features.map(feature => ({
-        name: feature.feature_name,
-        description: feature.description
-      }))
-    }))
   };
 
   return (
@@ -133,25 +119,23 @@ const OfferingsTabs = () => {
       </Box>
 
       <TabPanel value={value} index={0}>
-        <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
-          <Offerings {...userData.TravelInsuranceRecommendations} />
-        </Box>
+        <Offerings {...userData.TravelInsuranceRecommendations} />
       </TabPanel>
       <TabPanel value={value} index={1}>
         <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
           <Offerings {...userData.ForexAndExchangeRecommendations} />
         </Box>
       </TabPanel>
-      <TabPanel value={value} index={2}>
+      {/* <TabPanel value={value} index={2}>
         <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
           <Offerings {...userData.CreditCardAndTravelBenefitsRecommendations} />
         </Box>
       </TabPanel>
-      {/* <TabPanel value={value} index={3}>
+          <TabPanel value={value} index={3}>
         <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
-          <Offerings {...loanData} />
+              <Offerings {...userData.LoanAndFinancialOptions} />
         </Box>
-      </TabPanel> */}
+          </TabPanel> */}
     </Box>
   );
 };
