@@ -1,0 +1,62 @@
+{
+  "financial_recommendations": {
+    "recommendations": [
+      {
+        "expense_type": "Flight",
+        "amount": "£6,000",
+        "funding_source": "BARCLAYS BASIC CURRENT ACCOUNT",
+        "message": "You have sufficient available balance to cover this cost comfortably."
+      },
+      {
+        "expense_type": "Accommodation",
+        "amount": "£10,000",
+        "funding_source": "BARCLAYS BASIC CURRENT ACCOUNT",
+        "message": "We suggest using the BARCLAYS BASIC CURRENT ACCOUNT for your accommodation expenses."
+      },
+      {
+        "expense_type": "Food",
+        "amount": "£5,000",
+        "funding_sources": [
+          {
+            "account_name": "THE BARCLAYS BANK ACCOUNT",
+            "amount_used": "£2,547.82"
+          },
+          {
+            "account_name": "BARCLAYS BASIC SAVINGS ACCOUNT",
+            "amount_used": "£2,452.18"
+          }
+        ],
+        "message": "This will ensure all food-related expenses are comfortably covered."
+      },
+      {
+        "expense_type": "Transport",
+        "amount": "£8,000",
+        "funding_source": "BARCLAYS BASIC CURRENT ACCOUNT",
+        "message": "We recommend using your BARCLAYS BASIC CURRENT ACCOUNT for this expense as well."
+      }
+    ],
+    "additional_options": {
+      "travel_investment": {
+        "investment_type": "Travel Savings Plan",
+        "investment_amount": "£5,200",
+        "remaining_expenses": "£13,000",
+        "suggested_use": "Use the full £5,200 from this investment to cover part of the entertainment and other discretionary costs."
+      },
+      "credit_card": {
+        "credit_card_name": "Barclays Platinum Credit Card",
+        "available_credit": "£7,500",
+        "remaining_expenses": "£7,800",
+        "message": "Use your credit card for the remaining entertainment expenses, and ensure to make timely payments to avoid excessive interest. The 18% APR is applicable."
+      },
+      "future_financing": {
+        "option_name": "Personal Loan",
+        "message": "If required, consider a personal loan as a supplementary option. This can be discussed with our team if needed to ensure smooth financial management for your trip."
+      }
+    },
+    "summary": {
+      "total_expenses": "£42,000",
+      "total_available_funds": "£42,000",
+      "message": "Your travel expenses are well-covered through a combination of current accounts, savings, and investment funds. Additional credit options are available if needed."
+    }
+  }
+} 
