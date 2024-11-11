@@ -1,14 +1,12 @@
 import React, { useState } from 'react';
-import { Tabs, Tab, Box, Typography } from '@mui/material';
+import { Tabs, Tab, Box } from '@mui/material';
 import travelInsuranceIcon from '../assets/travel-insurance.avif';
-import forexIcon from '../assets/forex.jpg';
-import creditCardIcon from '../assets/card.avif';
-import loanIcon from '../assets/loan.jpg';
-import cc from '../assets/cc.jpeg';
 import forex from '../assets/forex.jpeg';
-import TravelInsurance from './Offerings/TravelInsurance';
-import { creditCardData, forexData, loanData, travelInsuranceData } from '../data/offeringsData';
+import cc from '../assets/cc.jpeg';
+import loanIcon from '../assets/loan.jpg';
+import { creditCardData, forexData, loanData } from '../data/offeringsData';
 import Offerings from './Offerings/Offerings';
+import userData from '../data/userData.json';
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -27,7 +25,7 @@ function TabPanel(props: TabPanelProps) {
     >
       {value === index && (
         <Box sx={{ p: 3 }}>
-          <Typography>{children}</Typography>
+          {children}
         </Box>
       )}
     </div>
@@ -39,6 +37,20 @@ const OfferingsTabs = () => {
 
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
     setValue(newValue);
+  };
+
+  // Transform the recommendations data to match Offerings component format
+  const travelInsuranceOfferings = {
+    title: "Travel Insurance Recommendations",
+    description: userData.TravelInsuranceRecommendations.personalized_message,
+    items: userData.TravelInsuranceRecommendations.recommendations.map(rec => ({
+      title: rec.product_name,
+      description: rec.description,
+      features: rec.features.map(feature => ({
+        name: feature.feature_name,
+        description: feature.description
+      }))
+    }))
   };
 
   return (
@@ -122,27 +134,24 @@ const OfferingsTabs = () => {
 
       <TabPanel value={value} index={0}>
         <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
-          <Offerings {...travelInsuranceData} />
+          <Offerings {...userData.TravelInsuranceRecommendations} />
         </Box>
       </TabPanel>
       <TabPanel value={value} index={1}>
         <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
-
-          <Offerings {...forexData} />
+          <Offerings {...userData.ForexAndExchangeRecommendations} />
         </Box>
       </TabPanel>
       <TabPanel value={value} index={2}>
         <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
-
-          <Offerings {...creditCardData} />
+          <Offerings {...userData.CreditCardAndTravelBenefitsRecommendations} />
         </Box>
       </TabPanel>
-      <TabPanel value={value} index={3}>
+      {/* <TabPanel value={value} index={3}>
         <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
-
           <Offerings {...loanData} />
         </Box>
-      </TabPanel>
+      </TabPanel> */}
     </Box>
   );
 };

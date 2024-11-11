@@ -1,7 +1,7 @@
 import { Box, Card, Typography } from '@mui/material'
 import React from 'react'
 import ApexChart from 'react-apexcharts'
-import browsingHistory from '../data/browsingHistory.json'
+import userData from '../data/userData.json';
 
 // Function to generate distinct colors based on array length
 const generateChartColors = (count: number) => {
@@ -20,7 +20,7 @@ const generateChartColors = (count: number) => {
 };
 
 // Get expense data from browsing history
-const nextExpenses = browsingHistory.customer_financial_plan.browsing_history.browsing_summary.next_expense;
+const nextExpenses = userData.aiPredictedExpenses.nextExpenses;
 const expenseData = Object.entries(nextExpenses).map(([label, value]) => ({
     label,
     value: value as number
@@ -42,7 +42,7 @@ const data = {
             y: {
                 formatter: (val: number) => `£${val.toLocaleString()}`
             },
-            custom: ({ series, seriesIndex, dataPointIndex, w }: any) => {
+            custom: ({ series, seriesIndex, w }: any) => {
                 return `<div class="custom-tooltip" style="
                     background: #1e3d6b;
                     padding: 8px;
