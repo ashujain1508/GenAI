@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import InputPopup from '../components/InputPopup'
-import { Autocomplete, Box, Card, Grid, IconButton, TextField } from '@mui/material';
+import { Autocomplete, Box, Button, Card, Grid, IconButton, TextField, Typography } from '@mui/material';
 import TravelCover from '../components/TravelCover';
 import SendIcon from '@mui/icons-material/Send';
 import OfferingsTabs from '../components/OfferingsTabs';
@@ -11,6 +11,7 @@ import ExpenseCalc from '../components/ExpenseCalc';
 import CurrentAccount from '../components/CurrentAccount';
 import browsingHistory from '../data/browsingHistory.json';
 import ExpenseAnalysis from '../components/ExpenseAnalysis';
+import { Update } from '@mui/icons-material';
 
 const Travel = () => {
     const [selectedCountry, setSelectedCountry] = useState<string|null>(null);
@@ -55,7 +56,17 @@ const Travel = () => {
                         <CurrentAccount onSliderChange={handleSliderChange} />
                     </Grid>
                     <Grid item xs={12}>
-                        <Card sx={{ p: 2, mt: 2 }}>
+
+                        <Card sx={{ p: 2, mt: 2 }} variant='outlined'>
+
+                            <Typography variant="h6" sx={{
+                                color: 'primary.main',
+                                fontWeight: 600,
+                                mb: 2
+                            }}>
+                                Update Your Preferences
+                            </Typography>
+
                             <Box 
                                 display='flex' 
                                 flexDirection='row' 
@@ -63,6 +74,7 @@ const Travel = () => {
                                 alignItems='center'
                                 gap={2}
                             >
+
                                 <Autocomplete
                                     options={mostVisitedLocations}
                                     value={selectedCountry}
@@ -87,19 +99,14 @@ const Travel = () => {
                                         }
                                     }}
                                 />
-                                <IconButton 
-                                    onClick={() => setAnalysisOpen(true)}
-                                    sx={{ 
-                                        transform: 'scale(1.2)',
-                                        color: '#0B2F5E',
-                                        backgroundColor: 'rgba(11, 47, 94, 0.05)',
-                                        '&:hover': {
-                                            backgroundColor: 'rgba(11, 47, 94, 0.1)'
-                                        }
-                                    }}
+
+                                <Button
+                                    size='large'
+                                    variant="outlined"
+                                    startIcon={<Update />}
                                 >
-                                    <SendIcon />
-                                </IconButton>
+                                    Update
+                                </Button>
                             </Box>
                         </Card>
                     </Grid>

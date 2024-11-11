@@ -1,13 +1,13 @@
 import { Box, Card, CardHeader, Divider, Stack, Typography, Slider } from "@mui/material";
 import React, { useState } from "react";
-import browsingHistory from '../data/browsingHistory.json';
+import userData from '../data/userData.json';
 
 interface CurrentAccountProps {
   onSliderChange: (total: number) => void;
 }
 
 const CurrentAccount: React.FC<CurrentAccountProps> = ({ onSliderChange }) => {
-  const nextExpenses = browsingHistory.customer_financial_plan.browsing_history.browsing_summary.next_expense;
+  const nextExpenses = userData.yourExpectedBudget.nextExpenses;
   const totalBudget = Object.values(nextExpenses).reduce((sum: number, value: number) => sum + value, 0);
   
   const [sliderValues, setSliderValues] = useState<Record<string, number>>(nextExpenses);
@@ -24,7 +24,7 @@ const CurrentAccount: React.FC<CurrentAccountProps> = ({ onSliderChange }) => {
   };
 
   return (
-    <Card sx={{ boxShadow: 1, height: '100%', display: 'flex', flexDirection: 'column' }}>
+    <Card sx={{ boxShadow: 1, height: '100%', display: 'flex', flexDirection: 'column' }} >
       <CardHeader 
         title={
           <Typography variant="subtitle1" sx={{ 
@@ -43,7 +43,7 @@ const CurrentAccount: React.FC<CurrentAccountProps> = ({ onSliderChange }) => {
 
       <Box sx={{ p: 2, flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'space-around' }}>
         <Stack spacing={1}>
-          {Object.entries(nextExpenses).map(([category, amount], index) => (
+          {Object.entries(nextExpenses).map(([category], index) => (
             <Box key={category}>
               <Stack 
                 direction="row" 

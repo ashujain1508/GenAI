@@ -1,5 +1,6 @@
 import { Box, Typography, Container, Card } from '@mui/material';
 import travelImage from '../assets/travel.jpg';
+import userData from '../data/userData.json';
 
 const TravelCover = () => {
   return (
@@ -43,6 +44,16 @@ const TravelCover = () => {
             }}
           >
             <Typography 
+            variant="h4"
+            sx={{
+              fontWeight: 500,
+              mb: 1,
+              color: '#00aeef',
+            }}
+          >
+            Hi {userData.userDetails.firstName}!
+          </Typography>
+          <Typography 
               variant="h3" 
               component="h1" 
               sx={{ 
@@ -51,7 +62,7 @@ const TravelCover = () => {
                 color: '#00aeef',
               }}
             >
-              Explore Europe with Barclays
+            {userData.travelCountryData.description.title}
             </Typography>
             <Typography 
               variant="h5" 
@@ -61,7 +72,7 @@ const TravelCover = () => {
                 maxWidth: '600px'
               }}
             >
-              Discover the rich history, diverse cultures, and stunning landscapes of Europe.
+            {userData.travelCountryData.description.subtitle}
             </Typography>
             <Typography 
               variant="body1" 
@@ -70,9 +81,7 @@ const TravelCover = () => {
                 opacity: 0.9,
               }}
             >
-              From the romantic streets of Paris to the ancient ruins of Rome, 
-              we'll help you navigate Europe with confidence. Enjoy secure payments with your Barclays card, 
-              competitive exchange rates for the Euro, and comprehensive travel insurance across the EU.
+            {userData.travelCountryData.description.text}
             </Typography>
           </Box>
         </Container>
