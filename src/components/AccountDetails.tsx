@@ -10,31 +10,11 @@ import {
 import PaymentsIcon from '@mui/icons-material/Payments';
 import SwapHorizIcon from '@mui/icons-material/SwapHoriz';
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
-import FlightIcon from '@mui/icons-material/Flight';
-import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import './AccountDetails.css';
+import browsingHistory from '../data/browsingHistory.json';
 
 const AccountDetails = () => {
-  const accounts = [
-    {
-      id: 1,
-      accountType: "THE BARCLAYS BANK ACCOUNT",
-      accountNumber: "****4789",
-      availableBalance: 2547.82
-    },
-    {
-      id: 2,
-      accountType: "BARCLAYS BASIC CURRENT ACCOUNT",
-      accountNumber: "****6234",
-      availableBalance: 15780.45
-    },
-    {
-      id: 3,
-      accountType: "BARCLAYS BASIC SAVINGS ACCOUNT",
-      accountNumber: "****9012",
-      availableBalance: 3765.44
-    }
-  ];
+  const accounts = browsingHistory.customer_financial_plan.customer_details.accounts;
 
   return (
     <Box sx={{ width: '100%' }}>
