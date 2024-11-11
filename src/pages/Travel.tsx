@@ -4,6 +4,9 @@ import { Autocomplete, Box, Card, Grid, IconButton, TextField } from '@mui/mater
 import TravelCover from '../components/TravelCover';
 import SendIcon from '@mui/icons-material/Send';
 import OfferingsTabs from '../components/OfferingsTabs';
+import ThirdPartyOfferings from '../components/ThirdPartyOfferings';
+
+
 import ExpenseCalc from '../components/ExpenseCalc';
 import CurrentAccount from '../components/CurrentAccount';
 import browsingHistory from '../data/browsingHistory.json';
@@ -137,6 +140,9 @@ const Travel = () => {
                     </Grid>
                     <Grid item xs={12} md={12}>
                         <OfferingsTabs />
+                    </Grid>
+                    <Grid item xs={12} md={12}>
+                        <ThirdPartyOfferings />
                     </Grid>
                 </Grid>
             }
