@@ -10,17 +10,21 @@ import browsingHistory from '../data/browsingHistory.json';
 import ExpenseAnalysis from '../components/ExpenseAnalysis';
 
 const Travel = () => {
+    const tripTypes = browsingHistory.customer_financial_plan.browsing_history.browsing_summary.trip_types;
+    const countries = browsingHistory.customer_financial_plan.browsing_history.browsing_summary.most_visited_locations;
+
     const [selectedCountry, setSelectedCountry] = useState<string|null>(null);
+    const [selectedTripType, setSelectedTripType] = useState<string|null>(tripTypes[0]);
     const [open, setOpen] = useState(selectedCountry === null);
     const [totalBudget, setTotalBudget] = useState<number>(0);
-    const [analysisOpen, setAnalysisOpen] = useState(false);
-
-    const mostVisitedLocations = browsingHistory.customer_financial_plan.browsing_history.browsing_summary.most_visited_locations;
+    const [showAnalysis, setShowAnalysis] = useState(true);
+    const [analysisExpense, setAnalysisExpense] = useState<number>(0);
 
     useEffect(() => {
         const nextExpenses = browsingHistory.customer_financial_plan.browsing_history.browsing_summary.next_expense;
         const total = Object.values(nextExpenses).reduce((sum, value) => sum + (value as number), 0);
         setTotalBudget(total);
+        setAnalysisExpense(total);
     }, []);
 
     const handleClose = () => {
@@ -29,6 +33,10 @@ const Travel = () => {
 
     const handleSliderChange = (newTotal: number) => {
         setTotalBudget(newTotal);
+    };
+
+    const handleShowAnalysis = () => {
+        setAnalysisExpense(totalBudget);
     };
 
     return (
@@ -61,11 +69,32 @@ const Travel = () => {
                                 gap={2}
                             >
                                 <Autocomplete
-                                    options={mostVisitedLocations}
-                                    value={selectedCountry}
-                                    onChange={(event, newValue) => setSelectedCountry(newValue)}
+                                    freeSolo
+                                    options={tripTypes}
+                                    value={selectedTripType}
+                                    onChange={(_, newValue) => setSelectedTripType(newValue)}
                                     renderInput={(params) => (
-                                        <TextField {...params} label="Change Country" variant="outlined" />
+                                        <TextField 
+                                            {...params} 
+                                            label="Trip Type" 
+                                            variant="outlined"
+                                            placeholder="Enter trip type"
+                                        />
+                                    )}
+                                    sx={{ width: 300 }}
+                                />
+                                <Autocomplete
+                                    freeSolo
+                                    options={countries}
+                                    value={selectedCountry}
+                                    onChange={(_, newValue) => setSelectedCountry(newValue)}
+                                    renderInput={(params) => (
+                                        <TextField 
+                                            {...params} 
+                                            label="Change Country" 
+                                            variant="outlined"
+                                            placeholder="Enter country"
+                                        />
                                     )}
                                     sx={{ width: 300 }}
                                 />
@@ -85,7 +114,7 @@ const Travel = () => {
                                     }}
                                 />
                                 <IconButton 
-                                    onClick={() => setAnalysisOpen(true)}
+                                    onClick={handleShowAnalysis}
                                     sx={{ 
                                         transform: 'scale(1.2)',
                                         color: '#0B2F5E',
@@ -100,17 +129,17 @@ const Travel = () => {
                             </Box>
                         </Card>
                     </Grid>
+                    <Grid item xs={12}>
+                        <ExpenseAnalysis 
+                            show={showAnalysis}
+                            currentExpense={analysisExpense}
+                        />
+                    </Grid>
                     <Grid item xs={12} md={12}>
                         <OfferingsTabs />
                     </Grid>
                 </Grid>
             }
-
-            <ExpenseAnalysis 
-                open={analysisOpen}
-                onClose={() => setAnalysisOpen(false)}
-                currentExpense={totalBudget}
-            />
         </div>
     )
 }

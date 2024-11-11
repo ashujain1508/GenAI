@@ -18,13 +18,13 @@
             "id": 3,
             "accountType": "BARCLAYS BASIC SAVINGS ACCOUNT",
             "accountNumber": "**9012",
-            "availableBalance": 22000
+            "availableBalance": 10000
           }
         ],
         "travel_investment": {
           "investmentAmount": 5000.00,
           "investmentType": "Travel Savings Plan",
-          "currentValue": 5200.00,
+          "currentValue": 10000.00,
           "investmentGrowth": "4% annual return"
         },
         "credit": {
@@ -123,22 +123,22 @@
       "recommended_financial_plan": {
         "flight_expense": {
           "amount": 6000,
-          "fund_source": "BARCLAYS BASIC CURRENT ACCOUNT"
+          "fund_source": "**6234"
         },
         "accommodation_expense": {
           "amount": 10000,
-          "fund_source": "BARCLAYS BASIC CURRENT ACCOUNT"
+          "fund_source": "**6234"
         },
         "food_expense": {
           "amount": 5000,
           "fund_source": [
-            "THE BARCLAYS BANK ACCOUNT",
-            "BARCLAYS BASIC SAVINGS ACCOUNT"
+            "**4789",
+            "**9012"
           ]
         },
         "transport_expense": {
           "amount": 8000,
-          "fund_source": "BARCLAYS BASIC CURRENT ACCOUNT"
+          "fund_source": "**6234"
         },
         "entertainment_expense": {
           "amount": 13000,
