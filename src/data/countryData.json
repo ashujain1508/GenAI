@@ -1,0 +1,30 @@
+{
+    "regionName": "Europe",
+    "description":{
+        "title": "Explore Europe with Barclays",
+        "subtitle": "Discover the rich history, diverse cultures, and stunning landscapes of Europe.",
+        "text": "From the romantic streets of Paris to the ancient ruins of Rome, we'll help you navigate Europe with confidence. Enjoy secure payments with your Barclays card, competitive exchange rates for the Euro, and comprehensive travel insurance across the EU."
+    },
+    "aiPredictedExpenses": {
+        "total": 1000,
+        "nextExpenses": {
+            "Flight": 6000,
+            "Accommodation": 10000,
+            "Food": 5000,
+            "Transport": 8000,
+            "Entertainment": 13000
+        },
+        "currency": "EUR"
+    },
+    "yourExpectedBudget": {
+        "total": 10000,
+        "nextExpenses": {
+            "Flight": 6000,
+            "Accommodation": 10000,
+            "Food": 5000,
+            "Transport": 8000,
+            "Entertainment": 13000
+        },
+        "currency": "EUR"
+    }
+}
