@@ -130,12 +130,12 @@ const OfferingsTabs = () => {
         <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
           <Offerings {...userData.CreditCardAndTravelBenefitsRecommendations} />
         </Box>
-      </TabPanel>
+      </TabPanel> */}
           <TabPanel value={value} index={3}>
         <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
               <Offerings {...userData.LoanAndFinancialOptions} />
         </Box>
-          </TabPanel> */}
+      </TabPanel>
     </Box>
   );
 };

@@ -28,7 +28,7 @@
         "travel_investment": {
             "investmentAmount": 5000.00,
             "investmentType": "Travel Savings Plan",
-            "currentValue": 40000.00,
+            "currentValue": 10000.00,
             "investmentGrowth": "4% annual return"
         },
         "credit": {
@@ -237,6 +237,49 @@
                 {
                     "feature_name": "Quick Transfer to Overseas Accounts",
                     "description": "Transfer funds internationally with ease using Barclays' competitive rates directly through the app."
+                }
+            ]
+        }
+    ]
+},
+"LoanAndFinancialOptions": {
+    "personalized_message": "To help you make the most of your travels, we recommend the following Barclays products, including loans, investment options, and financial services tailored to your travel needs:",
+    "recommendations": [
+        {
+            "product_name": "Barclays Personal Loan",
+            "personalized_message": "Cover large travel expenses easily with a flexible loan at competitive rates.",
+            "description": "A flexible loan offering competitive rates, ideal for funding travel plans or covering large travel-related expenses.",
+            "features": [
+                {
+                    "feature_name": "Flexible Repayment Options",
+                    "description": "Choose repayment terms that suit your budget and timeline."
+                },
+                {
+                    "feature_name": "Competitive Interest Rates",
+                    "description": "Enjoy lower interest rates compared to most credit cards."
+                },
+                {
+                    "feature_name": "Quick Approval",
+                    "description": "Fast and easy approval process to access funds quickly."
+                }
+            ]
+        },
+        {
+            "product_name": "Barclays Investment Account",
+            "personalized_message": "Grow your funds while traveling with a diversified Barclays investment portfolio.",
+            "description": "An investment account with options to invest in a variety of assets, tailored to your risk tolerance.",
+            "features": [
+                {
+                    "feature_name": "Diverse Asset Choices",
+                    "description": "Invest in mutual funds, stocks, bonds, and more."
+                },
+                {
+                    "feature_name": "Portfolio Tracking",
+                    "description": "Track your investments and growth in real-time."
+                },
+                {
+                    "feature_name": "Personalized Investment Advice",
+                    "description": "Get advice from Barclays financial advisors based on your financial goals."
                 }
             ]
         }

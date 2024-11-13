@@ -11,6 +11,7 @@ import {
 import shortfall from '../data/shortfall.json';
 // import financialProducts from '../data/financialProducts.json';
 import userData from '../data/userData.json';
+import { TipsAndUpdates } from '@mui/icons-material';
 
 interface ExpenseAnalysisProps {
   show: boolean;
@@ -210,14 +211,27 @@ const ExpenseAnalysis: React.FC<ExpenseAnalysisProps> = ({ show, currentExpense 
                       >
                         {solution.suggestion}
                       </Typography>
+                      <Box
+                        sx={{
+                          display: 'flex',
+                          alignItems: 'center',
+                          gap: 2,
+                          mb: 3,
+                          p: 3,
+                          backgroundColor: 'rgba(0, 174, 239, 0.05)',
+                          borderRadius: 2,
+                          border: '1px solid rgba(0, 174, 239, 0.2)'
+                        }}
+                      >
+
                       <Typography 
                         variant="body2" 
                         sx={{ 
-                          color: 'text.secondary'
+                          color: 'text.primary'
                         }}
                       >
                         {solution.details}
-                      </Typography>
+                        </Typography> </Box>
                     </CardContent>
                   </Card>
                 </Grid>

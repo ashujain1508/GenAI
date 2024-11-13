@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import InputPopup from '../components/InputPopup'
+
 import { Autocomplete, Box, Button, Card, Grid, TextField, Typography } from '@mui/material';
 import TravelCover from '../components/TravelCover';
 import SendIcon from '@mui/icons-material/Send';
@@ -12,6 +12,8 @@ import CurrentAccount from '../components/CurrentAccount';
 import ExpenseAnalysis from '../components/ExpenseAnalysis';
 import userData from '../data/userData.json';
 import { getPersonalizedTravelData } from '../services/openAIService';
+import AccountAndInvestmentDetails from '../components/AccountDetailsChart';
+import AccountDetailsChart from '../components/AccountDetailsChart';
 
 // Add this type definition before the Travel component
 interface UserDataResponse {
@@ -88,6 +90,7 @@ const Travel = () => {
                     <Grid item xs={12} md={8}>
                         <CurrentAccount onSliderChange={handleSliderChange} />
                     </Grid>
+
                     <Grid item xs={12}>
 
                         <Card variant='outlined' sx={{
@@ -177,12 +180,17 @@ const Travel = () => {
                             </Box>
                         </Card>
                     </Grid>
+                    <Grid item xs={12} md={4}>
+                        <AccountDetailsChart />
+                    </Grid>
+
                     <Grid item xs={12} md={12}>
                         <ExpenseAnalysis 
                             show={showAnalysis}
                             currentExpense={analysisExpense}
                         />
                     </Grid>
+
                     <Grid item xs={12} md={12}>
                         <OfferingsTabs />
                     </Grid>

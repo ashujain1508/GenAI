@@ -20,17 +20,7 @@ import { SvgIconProps } from '@mui/material';
 import { NavigateBefore, NavigateNext, TipsAndUpdates, AutoAwesome } from '@mui/icons-material';
 import { useRef } from 'react';
 
-// Type for the dynamic icon component
-type DynamicIconProps = {
-    iconName: string;
-    props?: SvgIconProps;
-};
 
-// Dynamic icon component
-const DynamicIcon: React.FC<DynamicIconProps> = ({ iconName, props }) => {
-    const IconComponent = (MuiIcons as any)[iconName];
-    return IconComponent ? <IconComponent {...props} /> : null;
-};
 
 // Types for our data structure
 interface Feature {
